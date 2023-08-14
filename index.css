@@ -1,0 +1,135 @@
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+    margin-top: 0;
+}
+
+.button-signUp{
+    background: #fff;
+    color: black;
+    border-radius: 20px;
+    
+}
+
+.button-signUp:hover{
+    color: black;
+}
+
+.nav-login li a i:hover{
+    border: 0;
+    border-radius: 50%;
+    background-color: gray;  
+    justify-content: space-between;
+}
+
+i{
+    padding: 5px 5px;
+}
+
+.main{
+    position: absolute;
+    top:50px;    
+    background-image:radial-gradient(46.3% 82.87% at 29.23% 17.13%, rgba(51, 203, 251, 0.4) 0%, rgba(51, 203, 251, 0) 100%);    
+    background-color: rgb(31,31,31);
+    
+    width: 100%;
+    height: 100%;
+}
+
+
+.listItem{
+    list-style: none;    
+    width: 384px;
+    height: 291px;
+    min-width: 360px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: rgba(25, 26, 26, 0.40);
+    box-shadow: 0px 12px 20px 0px rgba(5, 17, 16, 0.05);
+    
+}
+
+@media (max-width: 767px) {
+		.carousel-inner .carousel-item > div {
+			display: none;
+		}
+		.carousel-inner .carousel-item > div:first-child {
+			display: block;
+		}
+	}
+
+	.carousel-inner .carousel-item.active,
+	.carousel-inner .carousel-item-next,
+	.carousel-inner .carousel-item-prev {
+		display: flex;
+	}
+
+	/* medium and up screens */
+	@media (min-width: 768px) {
+
+		.carousel-inner .carousel-item-end.active,
+		.carousel-inner .carousel-item-next {
+			transform: translateX(25%);
+		}
+
+		.carousel-inner .carousel-item-start.active, 
+		.carousel-inner .carousel-item-prev {
+			transform: translateX(-25%);
+		}
+	}
+
+	.carousel-inner .carousel-item-end,
+	.carousel-inner .carousel-item-start { 
+		transform: translateX(0);
+	}
+
+
+.prevIcon{
+    margin-left: -80px;
+}
+
+.nextIcon{
+    margin-right: -120px;
+}
+
+.nameCoin{
+    display: inline;
+    color: #fff;
+    font-family: 'SF Pro Display', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    padding-left: 10px;
+}
+
+.nameCoinUsdt{
+    display: inline; 
+    color: rgb(212, 212, 212);
+    font-family: 'SF Pro Display', sans-serif;
+    font-size: 14px;
+    line-height: 19.6px;
+}
+
+.priceCoin{
+    display: inline;
+    color: #ffff;
+    font-family: 'SF Pro Display', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 44px;
+    padding-left: 10px;
+}
+
+.percentCoin{
+    display: inline;
+    font-family: 'SF Pro Display', sans-serif;
+    color: rgb(241, 73, 63);
+    font-weight: 700;
+    line-height: 23px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
