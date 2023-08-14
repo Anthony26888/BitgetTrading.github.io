@@ -109,12 +109,12 @@
             </div>
        </div>
 
-       <div class="container text-center my-3">
-		<div class="row mx-auto my-auto justify-content-center">
-			<div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-				<div class="carousel-inner" role="listbox">
-					<div class="carousel-item active">
-                        <div class="listItem">
+       <div class="container pt-lg-5">
+       
+			<div id="recipeCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item d-flex justify-content-between active">
+                        <div class="listItem d-block">
                             <div class="container p-xl-4 d-flex align-items-center">
                                 <img src="img/icon/BTC.png" alt="" style="width: 45px; height:45px">                        
                                 <p class="nameCoin">BTC</p>
@@ -125,12 +125,37 @@
                                 <span class="percentCoin" id="PerBTC"></span>
                             </div>
                         </div>
-                    </div>
-					<div class="carousel-item">
-                        <div class="listItem">
+
+                        <div class="listItem d-block">
                             <div class="container p-xl-4 d-flex align-items-center">
-                                <img src="img/icon/BTC.png" alt="" style="width: 45px; height:45px">                        
-                                <p class="nameCoin">BTC</p>
+                                <img src="img/icon/ETH.png" alt="" style="width: 45px; height:45px">                        
+                                <p class="nameCoin">ETH</p>
+                                <p class="nameCoinUsdt">/USDT</p>                        
+                            </div>
+                            <div class="container  d-flex align-content-center justify-content-between">
+                                <span class="priceCoin" id="ethPrice"></span>
+                                <span class="percentCoin" id="PerETH"></span>
+                            </div>
+                        </div>
+
+                        <div class="listItem d-block">
+                            <div class="container p-xl-4 d-flex align-items-center">
+                                <img src="img/icon/BNB.png" alt="" style="width: 45px; height:45px">                        
+                                <p class="nameCoin">BNB</p>
+                                <p class="nameCoinUsdt">/USDT</p>                        
+                            </div>
+                            <div class="container  d-flex align-content-center justify-content-between">
+                                <span class="priceCoin" id="bnbPrice"></span>
+                                <span class="percentCoin" id="PerBNB"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item d-flex justify-content-between">
+                        <div class="listItem d-block">
+                            <div class="container p-xl-4 d-flex align-items-center">
+                                <img src="img/icon/LTC.png" alt="" style="width: 45px; height:45px">                        
+                                <p class="nameCoin">LTC</p>
                                 <p class="nameCoinUsdt">/USDT</p>                        
                             </div>
                             <div class="container  d-flex align-content-center justify-content-between">
@@ -138,48 +163,34 @@
                                 <span class="percentCoin" id="PerBTC"></span>
                             </div>
                         </div>
+
+                        <div class="listItem d-block">
+                            <div class="container p-xl-4 d-flex align-items-center">
+                                <img src="img/icon/XRP.png" alt="" style="width: 45px; height:45px">                        
+                                <p class="nameCoin">XRP</p>
+                                <p class="nameCoinUsdt">/USDT</p>                        
+                            </div>
+                            <div class="container  d-flex align-content-center justify-content-between">
+                                <span class="priceCoin" id="ethPrice"></span>
+                                <span class="percentCoin" id="PerETH"></span>
+                            </div>
+                        </div>
+
+                        <div class="listItem d-block">
+                            <div class="container p-xl-4 d-flex align-items-center">
+                                <img src="img/icon/BGB.png" alt="" style="width: 45px; height:45px">                        
+                                <p class="nameCoin">BGB</p>
+                                <p class="nameCoinUsdt">/USDT</p>                        
+                            </div>
+                            <div class="container  d-flex align-content-center justify-content-between">
+                                <span class="priceCoin" id="bnbPrice"></span>
+                                <span class="percentCoin" id="PerBNB"></span>
+                            </div>
+                        </div>
                     </div>
-					<div class="carousel-item">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/FFE8D6/333333?text=3" class="img-fluid">
-								</div>
-								<div class="card-img-overlay">Slide 3</div>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/B7B7A4/333333?text=4" class="img-fluid">
-								</div>
-								<div class="card-img-overlay">Slide 4</div>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/A5A58D/333333?text=5" class="img-fluid">
-								</div>
-								<div class="card-img-overlay">Slide 5</div>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/6B705C/eeeeee?text=6" class="img-fluid">
-								</div>
-								<div class="card-img-overlay">Slide 6</div>
-							</div>
-						</div>
-					</div>
 				</div>
+                
+                
 				<a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				</a>
@@ -187,7 +198,7 @@
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				</a>
 			</div>
-		</div>		
+        </div>	
 	</div>	
     <script src="index.js"></script>
 </body>
