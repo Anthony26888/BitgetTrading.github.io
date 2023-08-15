@@ -64,4 +64,44 @@ function showPriceTop(){
 showPriceTop();
 
 
+function showChart(){
+  const coinId = 'bitcoin'; // Replace with the desired coin ID
+  const apiUrl = `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily&precision=2`;
+
+  // Fetch historical price data
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const prices = data.prices;
+      const timestamps = prices.map(entry => new Date(entry[0]).toLocaleDateString());
+      const pricesData = prices.map(entry => entry[1]);
+
+      // Call the function to create the chart
+      
+    
+  
+  
+      new Chart("chartBTC", {
+        type: "line",
+        data: {
+          labels: timestamps,
+          datasets: [{
+            fill: false,
+            lineTension: 0.8,
+            backgroundColor:"rgba(255,99,132)",
+            borderColor: "red",
+            data: pricesData
+          }]
+        },
+        options: {
+          legend: {
+             display: false //This will do the task
+          }
+       }
+      });
+    })
+    
+  }
+showChart()
+
 
