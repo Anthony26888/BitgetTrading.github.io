@@ -214,15 +214,14 @@
                 <div class="card rankCard">
                     <div class="container p-lg-5">
                         <div class="d-flex align-items-center justify-content-between ">
-                            <span class="card-title align-items-center" style="font-size: 24px; line-height: 32px; font-weight: 400;">Gainers</span>
+                            <span class="card-title align-items-center" style="font-size: 24px; line-height: 32px; font-weight: 400;">Market Cap</span>
                             <span class="card-title align-items-center" style="color:rgb(3 170 199)">More ></span>
                         </div>
                     </div>
                     <div class="container ">
                         <table class="table table-borderless">
                             <thead >
-                                <tr class="rank-table" >
-                                    <th style="background-color:transparent; color: #fff;">#</th>
+                                <tr class="rank-table" >                                    
                                     <th style="background-color:transparent; color: #fff;">Tranding pair</th>
                                     <th style="background-color:transparent; color: #fff;">Last price</th>
                                     <th style="background-color:transparent; color: #fff;">24h change</th>
@@ -230,7 +229,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style="background-color:transparent; color: #fff;">1</td>
+                                    <td class="table-info" style="background-color:transparent; color: #fff;">1</td>
                                     <td class="rank-table" style="background-color:transparent; color: #fff;">
                                         <img src="img/icon/SEI.png" class="icon-coin-rank" alt="SEI">
                                         <span class="name-coin-rank">SEI</span>
@@ -240,6 +239,7 @@
                                     <td style="background-color:transparent; color: #1DA2B4;">+ 310%</td>
                                     
                                 </tr>
+                                
                             </tbody>
                         </table>
                     </div>
@@ -255,25 +255,13 @@
                     <div class="container ">
                         <table class="table table-borderless">
                             <thead >
-                                <tr class="rank-table" >
-                                    <th style="background-color:transparent; color: #fff;">#</th>
+                                <tr class="rank-table" >                                    
                                     <th style="background-color:transparent; color: #fff;">Tranding pair</th>
                                     <th style="background-color:transparent; color: #fff;">Last price</th>
-                                    <th style="background-color:transparent; color: #fff;">24h change</th>
+                                    <th style="background-color:transparent; color: #fff;">Marketcap rank</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="background-color:transparent; color: #fff;">1</td>
-                                    <td class="rank-table" style="background-color:transparent; color: #fff;">
-                                        <img src="img/icon/SEI.png" class="icon-coin-rank" alt="SEI">
-                                        <span class="name-coin-rank">SEI</span>
-                                        <span class="usdt-rank">/USDT</span>
-                                    </td>
-                                    <td style="background-color:transparent; color: #1DA2B4;">$ 0.2575</td>
-                                    <td style="background-color:transparent; color: #1DA2B4;">+ 310%</td>
-                                    
-                                </tr>
+                            <tbody id="rank-table-trending">                               
                             </tbody>
                         </table>
                     </div>

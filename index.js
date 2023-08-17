@@ -63,4 +63,37 @@ function showPriceTop(){
 }
 showPriceTop();
 
-
+const rankTrending = document.getElementById("rank-table-trending");
+function showTrending(){
+  
+  const apiUrl = `https://api.coingecko.com/api/v3/search/trending`;
+  fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+    const trendingCoin = data.coins
+    trendingCoin.forEach(value => {
+      
+      const imgCoin = value.item.small;
+      const nameCoin = value.item.symbol;
+      const priceCoin = value.item.price_btc
+      const maketcap = value.item.market_cap_rank;
+      let newTd = document.createElement("tr");
+      newTd.classList.add("trend-coin")
+      newTd.innerHTML=`        
+        <td style="background-color:transparent; color: #fff; font-size:14px">
+          <img src="${imgCoin}" class="icon-coin-rank" alt="SEI">
+          <span>${nameCoin}/BTC</span>
+        </td>
+        <td style="background-color:transparent; color: #1DA2B4; font-size:14px">${priceCoin.toFixed(8)}</td>
+        <td style="background-color:transparent; color: #1DA2B4; text-align: center;" >#${maketcap}</td>      
+      `
+      rankTrending.appendChild(newTd);
+    });
+    
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+}
+showTrending();

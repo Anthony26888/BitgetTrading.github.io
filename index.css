@@ -106,7 +106,7 @@ canvas{
 }
 
 .rankCard{
-    height: 531px;
+    height: 575px;
     width: 371px;
     color: #fff;
     background: linear-gradient(180deg, rgba(25, 71, 85, 0.40) 0%, rgba(25, 26, 26, 0.40) 22.50%, rgba(25, 26, 26, 0.40) 100%);
@@ -117,10 +117,11 @@ canvas{
 .icon-coin-rank{
     width: 28px;
     height: 28px;
+    background-color:transparent;
 }
 
-th, td{
+.trending-coin{
     background-color:transparent;
-    color: #fff;
 }
-tr:nth-child(even) {background-color: #f2f2f2;}
+
+
