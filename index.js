@@ -68,10 +68,9 @@ function showTrending(){
   const apiUrl = `https://api.coingecko.com/api/v3/search/trending`;
   fetch(apiUrl)
   .then(response => response.json())
-  .then(data => {
-    console.log(data)
+  .then(data => {    
     const trendingCoin = data.coins
-    trendingCoin.slice(0, 4).forEach(value => {
+    trendingCoin.slice(0, 5).forEach(value => {
       
       const imgCoin = value.item.small;
       const nameCoin = value.item.symbol;
@@ -104,9 +103,8 @@ function showGainer(){
   .then(response => response.json())
   .then(data => {
     
-    const valueSort = data.sort((a,b) => b.price_change_percentage_24h - a.price_change_percentage_24h);
-    valueSort.slice(0, 4).forEach(value =>{
-      console.log(value)
+      const valueSort = data.sort((a,b) => b.price_change_percentage_24h - a.price_change_percentage_24h);
+      valueSort.slice(0, 5).forEach(value =>{      
       const imgCoin = value.image;
       const nameCoin = value.symbol;
       const priceCoin = value.current_price
@@ -128,25 +126,20 @@ showGainer();
 
 function showNewCoin(){
   const rankNew = document.getElementById("rank-table-new");
-  const newCoinRank = [
-    {
-    "coin1":"fasttoken",
-    "coin2":"cyberconnect",
-    "coin3":"sei-network",
-    "coin4":"bad-idea-ai",
-    "coin5":"harrypotterobamapacman8inu",
-    }
-  ]
-  newCoinRank.forEach(value =>{
-    const apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${value[0]}%2Cethereum%2Cbinancecoin%2Clitecoin&page=1&sparkline=false&price_change_percentage=24h&locale=en&precision=8`;
-    console.log(value.coin1)
-  })
+ 
+  const coin1 = "fasttoken";
+  const coin2 ="aibot";
+  const coin3 ="teso";
+  const coin4 ="bad-idea-ai";
+  const coin5 ="harrypotterobamapacman8inu";
+
   
+  const apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coin1}%2C${coin2}%2C${coin3}%2C${coin4}%2C${coin5}&page=1&sparkline=false&price_change_percentage=24h&locale=en&precision=8`;
+
   fetch(apiUrl)
   .then(response => response.json())
   .then(data => {
-    data.forEach(value =>{
-      console.log(value)
+    data.forEach(value =>{      
       const imgCoin = value.image;
       const nameCoin = value.symbol;
       const priceCoin = value.current_price
