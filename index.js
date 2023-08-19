@@ -1,66 +1,81 @@
 
 
+function showTop(){
+  const slide1 = document.getElementById("slide1")
+  const slide2 = document.getElementById("slide2")
+  const coin1 = "bitcoin";
+  const coin2 = "ethereum";
+  const coin3 = "binancecoin";
+  const coin4 = "litecoin";
+  const coin5 = "ripple";
+  const coin6 = "dogecoin";
+  const apiUrl1 = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coin1}%2C${coin2}%2C${coin3}&page=1&sparkline=true&price_change_percentage=24h&locale=en&precision=3`;
+  const apiUrl2 = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coin4}%2C${coin5}%2C${coin6}&page=1&sparkline=true&price_change_percentage=24h&locale=en&precision=3`;
 
-
-
-
-
-function showPriceTop(){
-  var btcPrice = document.getElementById("btcPrice")
-  var ethPrice = document.getElementById("ethPrice")
-  var bnbPrice = document.getElementById("bnbPrice")
-  var ltcPrice = document.getElementById("ltcPrice")
-  var xrpPrice = document.getElementById("xrpPrice")
-  var dogePrice = document.getElementById("dogePrice")
-  var perBTC = document.getElementById("PerBTC")
-  var perETH = document.getElementById("PerETH")
-  var perBNB = document.getElementById("PerBNB")
-  var perLTC = document.getElementById("PerLTC")
-  var perXRP = document.getElementById("PerXRP")
-  var perDOGE = document.getElementById("PerDOGE")
-
-  const apiUrl = `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum%2Cbinancecoin%2Clitecoin%2Cripple%2Cdogecoin&vs_currencies=usd&include_24hr_change=true&precision=4`;
-  fetch(apiUrl)
+  fetch(apiUrl1)
   .then(response => response.json())
-  .then(data => {  
-    const valueBTC = data.bitcoin.usd;     
-    const valueETH = data.ethereum.usd;
-    const valueBNB = data.binancecoin.usd;
-    const valueLTC = data.litecoin.usd;     
-    const valueXRP = data.ripple.usd;
-    const valueDOGE = data.dogecoin.usd;
-    
-
-    const valuePerBTC = data.bitcoin.usd_24h_change;
-    const valuePerETH = data.ethereum.usd_24h_change;
-    const valuePerBNB = data.binancecoin.usd_24h_change;
-    const valuePerLTC = data.litecoin.usd_24h_change;
-    const valuePerXRP = data.ripple.usd_24h_change;
-    const valuePerDOGE = data.dogecoin.usd_24h_change;
-   
-
-
-
-    btcPrice.innerHTML = valueBTC.toLocaleString();    
-    ethPrice.innerHTML = valueETH.toLocaleString();
-    bnbPrice.innerHTML = valueBNB.toLocaleString();
-    ltcPrice.innerHTML = valueLTC.toLocaleString();    
-    xrpPrice.innerHTML = valueXRP.toLocaleString();
-    dogePrice.innerHTML = valueDOGE.toLocaleString();
-    
-    perBTC.innerHTML = valuePerBTC.toLocaleString()+'%';
-    perETH.innerHTML = valuePerETH.toLocaleString()+'%';
-    perBNB.innerHTML = valuePerBNB.toLocaleString()+'%';
-    perLTC.innerHTML = valuePerLTC.toLocaleString()+'%';
-    perXRP.innerHTML = valuePerXRP.toLocaleString()+'%';
-    perDOGE.innerHTML = valuePerDOGE.toLocaleString()+'%';
-    
+  .then(data => { 
+    data.forEach(value =>{
+      const colorPer = document.querySelector("percentCoin") 
+      const nameCoin = value.symbol;
+      const priceCoin = value.current_price;
+      const imageCoin = value.image;
+      const percentCoin = value.price_change_percentage_24h;     
+      let newDiv = document.createElement("div")
+      newDiv.innerHTML = `
+        <div class="listItem d-block">
+          <div class="container p-xl-4 d-flex align-items-center">
+              <img src="${imageCoin}" alt="" style="width: 45px; height:45px">                        
+              <p class="nameCoin">${nameCoin}</p>
+              <p class="nameCoinUsdt">/USDT</p>                        
+          </div>
+          <div class="container  d-flex align-content-center justify-content-between">
+            <span class="priceCoin">$${priceCoin.toLocaleString()}</span>
+            <span class="percentCoin">${percentCoin.toFixed(2)}%</span>
+          </div>
+          
+        </div>
+      `
+      slide1.appendChild(newDiv);
+    })
   })
   .catch(error => {
     console.error('Error fetching data:', error);
   });
+
+
+  fetch(apiUrl2)
+  .then(response => response.json())
+  .then(data => { 
+    data.forEach(value =>{
+      const nameCoin = value.symbol;
+      const priceCoin = value.current_price;
+      const imageCoin = value.image;
+      const percentCoin = value.price_change_percentage_24h;
+      let newDiv = document.createElement("div")
+      newDiv.innerHTML = `
+        <div class="listItem d-block">
+          <div class="container p-xl-4 d-flex align-items-center">
+              <img src="${imageCoin}" alt="" style="width: 45px; height:45px">                        
+              <p class="nameCoin">${nameCoin}</p>
+              <p class="nameCoinUsdt">/USDT</p>                        
+          </div>
+          <div class="container  d-flex align-content-center justify-content-between">
+            <span class="priceCoin">$${priceCoin.toLocaleString()}</span>
+            <span class="percentCoin">${percentCoin.toFixed(2)}%</span>
+          </div>
+        </div>
+      `
+      slide2.appendChild(newDiv);
+    })
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
+  
 }
-showPriceTop();
+showTop();
 
 
 function showTrending(){
@@ -96,6 +111,7 @@ function showTrending(){
 }
 showTrending();
 
+
 function showGainer(){
   const rankGainer = document.getElementById("rank-table-gainer");
   const apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=250&page=1&sparkline=false&price_change_percentage=24h&locale=en`;
@@ -124,6 +140,7 @@ function showGainer(){
 }
 showGainer();
 
+
 function showNewCoin(){
   const rankNew = document.getElementById("rank-table-new");
  
@@ -147,7 +164,7 @@ function showNewCoin(){
       let newTd = document.createElement("tr");      
       newTd.innerHTML=`        
         <td style="background-color:transparent; color: #fff; font-size:14px; ">
-          <img src="${imgCoin}" class="icon-coin-rank" alt="SEI">
+          <img src="${imgCoin}" class="icon-coin-rank" alt="${nameCoin}">
           <span style="text-transform: uppercase;">${nameCoin}/USDT</span>
         </td>
         <td style="background-color:transparent; color: #1DA2B4; font-size:14px; text-align: center;">${priceCoin.toFixed(8)}</td>
@@ -158,3 +175,40 @@ function showNewCoin(){
   })
 }
 showNewCoin();
+
+
+function spotTable(){
+  
+  const spotTable = document.getElementById("spot-table");
+  const apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=24h&locale=en`;
+  fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+
+    data.forEach(value =>{                
+      const imgCoin = value.image;
+      const nameCoin = value.symbol;
+      const priceCoin = value.current_price;
+      const marketCapCoin = value.market_cap;
+      const percentCoin = value.price_change_percentage_24h;       
+    
+      let newTd = document.createElement("tr");      
+      newTd.innerHTML=`        
+        <td style="background-color:transparent; color: #fff; font-size:18px; padding:15px;">
+          <img src="${imgCoin}" class="icon-coin-rank" alt="SEI">
+          <span style="text-transform: uppercase;">${nameCoin}/USDT</span>
+        </td>
+        <td style="background-color:transparent; color: #fff; font-size:16px;">${priceCoin.toFixed(8)}</td>
+        <td id="colorPer" style="background-color:transparent; font-size:16px; ">${percentCoin.toFixed(2)}%</td>      
+        <td style="background-color:transparent; color: #fff; font-size:16px;">${marketCapCoin}</td>    
+        <td style="background-color:transparent; color: #fff; font-size:16px;">${voltCoin}</td>  
+        <td style="background-color:transparent; color: #fff; font-size:16px;">â</td> 
+        <td style="background-color:transparent; color: #1DA2B4;font-size:16px;">Trade</td> 
+        
+      `
+      spotTable.appendChild(newTd);
+    })
+  })
+}
+spotTable();
+
