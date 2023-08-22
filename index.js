@@ -20,7 +20,9 @@ function showTop(){
       const nameCoin = value.symbol;
       const priceCoin = value.current_price;
       const imageCoin = value.image;
-      const percentCoin = value.price_change_percentage_24h;     
+      const percentCoin = value.price_change_percentage_24h;   
+      const sparklineCoin = value.sparkline_in_7d.price.join(', ');  
+      console.log(sparklineCoin)
       let newDiv = document.createElement("div")
       newDiv.innerHTML = `
         <div class="listItem d-block">
@@ -33,7 +35,9 @@ function showTop(){
             <span class="priceCoin">$${priceCoin.toLocaleString()}</span>
             <span class="percentCoin">${percentCoin.toFixed(2)}%</span>
           </div>
-          
+          <svg class="container" width="350" height="120" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="${sparklineCoin}" fill="lime" stroke="red" stroke-width="5" />
+          </svg>
         </div>
       `
       slide1.appendChild(newDiv);
@@ -149,6 +153,7 @@ function showNewCoin(){
   const coin3 ="teso";
   const coin4 ="bad-idea-ai";
   const coin5 ="harrypotterobamapacman8inu";
+  
 
   
   const apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coin1}%2C${coin2}%2C${coin3}%2C${coin4}%2C${coin5}&page=1&sparkline=false&price_change_percentage=24h&locale=en&precision=8`;
@@ -191,7 +196,7 @@ function spotTable(){
       const priceCoin = value.current_price;
       const marketCapCoin = value.market_cap;
       const percentCoin = value.price_change_percentage_24h;       
-    
+      const volCoin = value.total_volume;       
       let newTd = document.createElement("tr");      
       newTd.innerHTML=`        
         <td style="background-color:transparent; color: #fff; font-size:18px; padding:15px;">
@@ -201,7 +206,7 @@ function spotTable(){
         <td style="background-color:transparent; color: #fff; font-size:16px;">${priceCoin.toFixed(8)}</td>
         <td id="colorPer" style="background-color:transparent; font-size:16px; ">${percentCoin.toFixed(2)}%</td>      
         <td style="background-color:transparent; color: #fff; font-size:16px;">${marketCapCoin}</td>    
-        <td style="background-color:transparent; color: #fff; font-size:16px;">${voltCoin}</td>  
+        <td style="background-color:transparent; color: #fff; font-size:16px;">${volCoin}</td>  
         <td style="background-color:transparent; color: #fff; font-size:16px;">â</td> 
         <td style="background-color:transparent; color: #1DA2B4;font-size:16px;">Trade</td> 
         

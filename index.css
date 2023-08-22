@@ -42,7 +42,7 @@ i{
 .listItem{
     list-style: none;    
     width: 384px;
-    height: 190px;
+    height: 280px;
     min-width: 360px;
     flex-shrink: 0;
     border-radius: 8px;
@@ -153,3 +153,4 @@ canvas{
 #colorPer:before {
     color: red; /* Color for negative numbers */
 }
+
