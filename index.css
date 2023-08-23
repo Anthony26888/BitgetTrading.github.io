@@ -42,7 +42,7 @@ i{
 .listItem{
     list-style: none;    
     width: 384px;
-    height: 280px;
+    height: 300px;
     min-width: 360px;
     flex-shrink: 0;
     border-radius: 8px;
@@ -102,8 +102,16 @@ i{
     padding-top: 10px;
 }
 
-canvas{
-    background: transparent;
+.sparkline{
+    
+    width: 345px;
+    height: 120px;
+    border-width: 5px;
+}
+
+.sparkline-spot{
+    width:144px;
+    height:40px;
 }
 
 .rankCard{
@@ -141,16 +149,4 @@ canvas{
 }
 
 
-#colorPer:before {
-    content: "";
-    display: inline;
-}
-  
-#colorPer:before {
-    color: green; /* Default color for positive numbers */
-}
-  
-#colorPer:before {
-    color: red; /* Color for negative numbers */
-}
 

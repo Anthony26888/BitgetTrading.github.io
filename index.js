@@ -35,9 +35,7 @@ function showTop(){
             <span class="priceCoin">$${priceCoin.toLocaleString()}</span>
             <span class="percentCoin">${percentCoin.toFixed(2)}%</span>
           </div>
-          <svg class="container" width="350" height="120" xmlns="http://www.w3.org/2000/svg">
-            <polyline points="${sparklineCoin}" fill="lime" stroke="red" stroke-width="5" />
-          </svg>
+          <img class="container justify-content-center pt-xxl-3 ps-3 sparkline" src="https://quickchart.io/chart?c={type:'sparkline',data:{datasets:[{fill:false,borderWidth:5,borderColor:'red',data:[${sparklineCoin}]}]}}" />
         </div>
       `
       slide1.appendChild(newDiv);
@@ -56,6 +54,7 @@ function showTop(){
       const priceCoin = value.current_price;
       const imageCoin = value.image;
       const percentCoin = value.price_change_percentage_24h;
+      const sparklineCoin = value.sparkline_in_7d.price.join(', ');  
       let newDiv = document.createElement("div")
       newDiv.innerHTML = `
         <div class="listItem d-block">
@@ -68,6 +67,7 @@ function showTop(){
             <span class="priceCoin">$${priceCoin.toLocaleString()}</span>
             <span class="percentCoin">${percentCoin.toFixed(2)}%</span>
           </div>
+          <img class="container sparkline" src="https://quickchart.io/chart?c={type:'sparkline',data:{datasets:[{fill:false,borderWidth:5,borderColor:'red',data:[${sparklineCoin}]}]}}" />
         </div>
       `
       slide2.appendChild(newDiv);
@@ -190,13 +190,14 @@ function spotTable(){
   .then(response => response.json())
   .then(data => {
 
-    data.forEach(value =>{                
+    data.slice(0,10).forEach(value =>{                
       const imgCoin = value.image;
       const nameCoin = value.symbol;
       const priceCoin = value.current_price;
       const marketCapCoin = value.market_cap;
       const percentCoin = value.price_change_percentage_24h;       
-      const volCoin = value.total_volume;       
+      const volCoin = value.total_volume;  
+      const sparklineCoin = value.sparkline_in_7d.price.join(', ');     
       let newTd = document.createElement("tr");      
       newTd.innerHTML=`        
         <td style="background-color:transparent; color: #fff; font-size:18px; padding:15px;">
@@ -204,10 +205,10 @@ function spotTable(){
           <span style="text-transform: uppercase;">${nameCoin}/USDT</span>
         </td>
         <td style="background-color:transparent; color: #fff; font-size:16px;">${priceCoin.toFixed(8)}</td>
-        <td id="colorPer" style="background-color:transparent; font-size:16px; ">${percentCoin.toFixed(2)}%</td>      
+        <td style="background-color:transparent; color: #fff; font-size:16px; ">${percentCoin.toFixed(2)}%</td>      
         <td style="background-color:transparent; color: #fff; font-size:16px;">${marketCapCoin}</td>    
         <td style="background-color:transparent; color: #fff; font-size:16px;">${volCoin}</td>  
-        <td style="background-color:transparent; color: #fff; font-size:16px;">â</td> 
+        <td style="background-color:transparent; color: #fff; font-size:16px;"><img class="sparkline-spot" src="https://quickchart.io/chart?c={type:'sparkline',data:{datasets:[{fill:false,borderWidth:3,borderColor:'red',data:[${sparklineCoin}]}]}}" /></td> 
         <td style="background-color:transparent; color: #1DA2B4;font-size:16px;">Trade</td> 
         
       `
