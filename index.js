@@ -15,8 +15,7 @@ function showTop(){
   fetch(apiUrl1)
   .then(response => response.json())
   .then(data => { 
-    data.forEach(value =>{
-      const colorPer = document.querySelector("percentCoin") 
+    data.forEach(value =>{      
       const nameCoin = value.symbol;
       const priceCoin = value.current_price;
       const imageCoin = value.image;
@@ -67,7 +66,7 @@ function showTop(){
             <span class="priceCoin">$${priceCoin.toLocaleString()}</span>
             <span class="percentCoin">${percentCoin.toFixed(2)}%</span>
           </div>
-          <img class="container sparkline" src="https://quickchart.io/chart?c={type:'sparkline',data:{datasets:[{fill:false,borderWidth:5,borderColor:'red',data:[${sparklineCoin}]}]}}" />
+          <img class="container justify-content-center pt-xxl-3 ps-3 sparkline" src="https://quickchart.io/chart?c={type:'sparkline',data:{datasets:[{fill:false,borderWidth:5,borderColor:'red',data:[${sparklineCoin}]}]}}" />
         </div>
       `
       slide2.appendChild(newDiv);
