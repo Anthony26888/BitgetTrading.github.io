@@ -20,8 +20,7 @@ function showTop(){
       const priceCoin = value.current_price;
       const imageCoin = value.image;
       const percentCoin = value.price_change_percentage_24h;   
-      const sparklineCoin = value.sparkline_in_7d.price.join(', ');  
-      console.log(sparklineCoin)
+      const sparklineCoin = value.sparkline_in_7d.price.join(', ');        
       let newDiv = document.createElement("div")
       newDiv.innerHTML = `
         <div class="listItem d-block">
@@ -181,15 +180,23 @@ function showNewCoin(){
 showNewCoin();
 
 
-function spotTable(){
+
+
+function spotTable(s){
+
+  const pagination = document.getElementById("pagination-spot")
+  pagination.innerHTML="";
+  const itemPage = 10;
+  const currentPage =1;
   
+   
   const spotTable = document.getElementById("spot-table");
   const apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=24h&locale=en`;
   fetch(apiUrl)
   .then(response => response.json())
   .then(data => {
 
-    data.slice(0,10).forEach(value =>{                
+    data.slice(10,20).forEach(value =>{                
       const imgCoin = value.image;
       const nameCoin = value.symbol;
       const priceCoin = value.current_price;
@@ -213,7 +220,27 @@ function spotTable(){
       `
       spotTable.appendChild(newTd);
     })
+    const itemsToDisplay = data.slice(startIndex, endIndex);
+    const totalPage = Math.ceil(data.length/itemPage)      
+    console.log(totalPage)
+    for (let i = 1; i <= totalPage; i++) {
+      const startIndex = (i-1)*itemPage;
+      const endIndex = i*itemPage;
+      const pageLink = document.createElement("a");
+      pageLink.classList.add("page-link")
+      pageLink.classList.add("p-3")
+      pageLink.textContent=i;
+      pageLink.href="#";              
+      pageLink.addEventListener('click', () => {
+        currentPage = i;
+        displayItems();
+      })
+      pagination.appendChild(pageLink);
+    }
   })
 }
 spotTable();
+
+
+
 

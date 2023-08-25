@@ -35,9 +35,6 @@ i{
     padding: 5px 5px;
 }
 
-
-
-
 .listItem{
     list-style: none;    
     width: 384px;
@@ -180,4 +177,9 @@ i{
     font-weight: 500;
     line-height: 22px;
     cursor: pointer;
+}
+
+
+#pagination-spot{
+    color: rgb(235,235,235);
 }
