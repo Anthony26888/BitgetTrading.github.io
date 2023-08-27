@@ -181,22 +181,26 @@ showNewCoin();
 
 
 
+const itemPage = 10;
+const currentPage =1;
 
-function spotTable(s){
 
-  const pagination = document.getElementById("pagination-spot")
-  pagination.innerHTML="";
-  const itemPage = 10;
-  const currentPage =1;
+
+
+function spotTable(valuePage){
   
-   
+  const startIndex = (currentPage - 1)* itemPage;
+  const endIndex = currentPage * itemPage;
+  console.log(valuePage)
+  
+  const pagination = document.getElementById("pagination-spot")
   const spotTable = document.getElementById("spot-table");
   const apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=24h&locale=en`;
   fetch(apiUrl)
   .then(response => response.json())
-  .then(data => {
-
-    data.slice(10,20).forEach(value =>{                
+  .then(data => {    
+    
+    data.slice(startIndex, endIndex).forEach(value =>{                
       const imgCoin = value.image;
       const nameCoin = value.symbol;
       const priceCoin = value.current_price;
@@ -214,32 +218,34 @@ function spotTable(s){
         <td style="background-color:transparent; color: #fff; font-size:16px; ">${percentCoin.toFixed(2)}%</td>      
         <td style="background-color:transparent; color: #fff; font-size:16px;">${marketCapCoin}</td>    
         <td style="background-color:transparent; color: #fff; font-size:16px;">${volCoin}</td>  
-        <td style="background-color:transparent; color: #fff; font-size:16px;"><img class="sparkline-spot" src="https://quickchart.io/chart?c={type:'sparkline',data:{datasets:[{fill:false,borderWidth:3,borderColor:'red',data:[${sparklineCoin}]}]}}" /></td> 
+        <td style="background-color:transparent; color: #fff; font-size:16px;">
+          <img class="sparkline-spot" src="https://quickchart.io/chart?c={type:'sparkline',data:{datasets:[{fill:false,borderWidth:3,borderColor:'red',data:[${sparklineCoin}]}]}}" />
+        </td> 
         <td style="background-color:transparent; color: #1DA2B4;font-size:16px;">Trade</td> 
         
       `
       spotTable.appendChild(newTd);
+      
     })
-    const itemsToDisplay = data.slice(startIndex, endIndex);
-    const totalPage = Math.ceil(data.length/itemPage)      
-    console.log(totalPage)
-    for (let i = 1; i <= totalPage; i++) {
-      const startIndex = (i-1)*itemPage;
-      const endIndex = i*itemPage;
+    const totalPage = Math.ceil(data.length/itemPage)   
+    for (let i = 1; i <= totalPage; i++) {      
       const pageLink = document.createElement("a");
       pageLink.classList.add("page-link")
       pageLink.classList.add("p-3")
       pageLink.textContent=i;
       pageLink.href="#";              
-      pageLink.addEventListener('click', () => {
-        currentPage = i;
-        displayItems();
-      })
+      pageLink.setAttribute("data-bs-num", i)
       pagination.appendChild(pageLink);
+      
     }
+    clickPage();
   })
 }
 spotTable();
+
+function clickPage(){
+  
+}
 
 
 
