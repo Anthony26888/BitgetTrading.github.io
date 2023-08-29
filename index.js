@@ -247,6 +247,26 @@ function clickPage(){
   
 }
 
+function tradeSpotNav(){
+  const listSpot = document.querySelector(".list-nav")
+  const apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=24h&locale=en`;
+  fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {    
+    const newLi = document.createElement("li")
+    newLi.classList.add("d-flex")
+    newLi.innerHTML = `
+      <img src=""  alt="" style="width: 24px; height: 24px;">
+      <div class="d-flex flex-column">
+          <h6></h6>
+          <small></small>
+      </div>
+    `
+
+  })
+}
+tradeSpotNav();
+
 
 
 
