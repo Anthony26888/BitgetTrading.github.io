@@ -49,9 +49,18 @@ body{
     min-width: 250px;
     
     
+    
 }
 .columns-3{
-    min-width: 550px;
+    min-width: 550px; 
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;    
+    
+}
+
+.columns-4{
+    min-width: 300px;
 }
 
 

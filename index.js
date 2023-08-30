@@ -248,20 +248,27 @@ function clickPage(){
 }
 
 function tradeSpotNav(){
-  const listSpot = document.querySelector(".list-nav")
-  const apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=24h&locale=en`;
+  const listSpotNav = document.querySelector(".list-nav")
+  const apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&locale=en`;
   fetch(apiUrl)
   .then(response => response.json())
-  .then(data => {    
-    const newLi = document.createElement("li")
-    newLi.classList.add("d-flex")
-    newLi.innerHTML = `
-      <img src=""  alt="" style="width: 24px; height: 24px;">
-      <div class="d-flex flex-column">
-          <h6></h6>
-          <small></small>
-      </div>
-    `
+  .then(data => {  
+    data.forEach(value =>{
+      const imgCoin = value.image;
+      const nameCoin = value.symbol;
+      const priceCoin = value.current_price;  
+      const newLi = document.createElement("li")
+      newLi.classList.add("d-flex")
+      newLi.innerHTML = `
+        <img src="${imgCoin}"  alt="" style="width: 24px; height: 24px;">
+        <div class="d-flex flex-column">
+            <h6 style="text-transform: uppercase;">${nameCoin}/USDT</h6>
+            <small>${priceCoin}</small>
+        </div>
+      `
+      listSpotNav.appendChild(newLi)
+    })
+    
 
   })
 }
