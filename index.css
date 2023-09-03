@@ -63,6 +63,17 @@ body{
     min-width: 300px;
 }
 
+.columns-5{
+    min-width: 800px;
+}
+
+.columns-6{
+    min-width: 1000px;
+}
+
+.columns-7{
+    min-width: 300px;
+}
 
 
 .icon-nav{    
@@ -94,6 +105,18 @@ small{
     
 }
 
+.button-detail{
+    box-shadow: 0 2.8px #fff;
+    border-color: #fff;
+    text-align: center;
+    justify-content: center;
+    width: 162px;
+    height:40px;
+    border-radius: 32px;
+    background-color: rgb(66 66 66);
+    color: #fff;
+}
+
 .list-nav li{
     list-style: none;   
     margin: 10px 0;
@@ -113,12 +136,17 @@ small{
     background: #fff;
     color: black;
     border-radius: 20px;
+    width: 90px;
+    height: 40px;
+    margin-top: 5px;
     
 }
 
-.button-signUp:hover{
-    color: black;
+.nav-login li{
+    margin: 0 10px;
 }
+
+
 
 .nav-login li a i:hover{
     border: 0;

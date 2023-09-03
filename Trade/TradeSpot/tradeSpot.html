@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Spot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>    
+    <link rel="stylesheet" href="/Trade/tradeSpot.css">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a href="" class="navbar-brand">
+                <img src="/img/Logo-Bitget/logo-dark.svg.svg" alt="" style="width: 103px; height: 31;">
+            </a>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">            
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown px-xl-3  ">  <!---SPOT-TRADING-->
+                        <a href="" class="nav-link " role="button" data-bs-toggle="dropdown">Spot Trading</a>
+                        <ul class="dropdown-menu dropdown-menu-dark columns-1" >  
+                            <li class="d-flex ">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/more-spot-convert-dark.7f689ce8e8f9981af3696f9c300e8aa1.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2">
+                                        <a href="" class="content-nav">Convert</a><br>
+                                        <small>Zero transaction fees and no slippage.</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/more-spot-trading-dark.f6f93ba336854376212baf613611a02f.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2">
+                                        <a href="" class="content-nav">Spot Trading</a><br>
+                                        <small>Buy and sell crypto</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/more-spot-margin-dark.35296153034d6428a2dd04e36f7d566d.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2" >
+                                        <a href="" class="content-nav">Margin</a><br>
+                                        <small>Magnify earnings by borrowing</small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                
+                    <li class="nav-item dropdown px-xl-3">    <!---USDT-M-FUTURE-->                    
+                        <a href="" class="nav-link " role="button" data-bs-toggle="dropdown">USDT-M Futures</a>
+                        <ul class="dropdown-menu dropdown-menu-dark columns-1">
+                            <li class="d-flex ">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/usdt-dark1.f4e47d65db2df1029be973d779394b87.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2">
+                                        <a href="" class="content-nav">USDT-M Futures</a><br>
+                                        <small>Perpetual futures settled in USDT</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/usdt-demo-dark.1abe23830051f4a440e4cb1ee39796a9.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2">
+                                        <a href="" class="content-nav">USDT-M Futures Demo</a><br>
+                                        <small>Try out USDT-M futures trading</small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                
+                    <li class="nav-item dropdown px-xl-3">    <!---COIN-M-FUTURE-->
+                        <a href="" class="nav-link " role="button" data-bs-toggle="dropdown">Coin-M Futures</a>
+                        <ul class="dropdown-menu dropdown-menu-dark columns-1">
+                            <li class="d-flex ">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/coin-m-dark.dbd668dd0d9cceae923daf00aa5bec88.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2">
+                                        <a href="" class="content-nav">Coin-M Perpetual Futures</a><br>
+                                        <small>Trade futures without expiration on margin</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/coin-m-settled-dark.a409bc0d4f11572c32cbe3b22526871a.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2">
+                                        <a href="" class="content-nav">Coin-M Settled Futures</a><br>
+                                        <small>Trade futures with expiration on margin</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/coin-m-demo-dark.82ee28a6a9e735becede5df128da27d8.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2" >
+                                        <a href="" class="content-nav">Coin-M Futures Demo</a><br>
+                                        <small>Try out Coin-M futures trading</small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                    </li>
+                
+                    <li class="nav-item dropdown px-xl-3">    <!---COPY-->
+                        <a href="" class="nav-link " role="button" data-bs-toggle="dropdown">USDC-M Futures</a>
+                        <ul class="dropdown-menu dropdown-menu-dark columns-4">
+                            <li class="d-flex ">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/usdc-dark1.6762eba8415f0d39a55dc6b122619233.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2">
+                                        <a href="" class="content-nav">USDC-M Futures</a><br>
+                                        <small>Perpetual futures settled in USDC</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/usdt-demo-dark.1abe23830051f4a440e4cb1ee39796a9.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2">
+                                        <a href="" class="content-nav">USDC-M Futures Demo</a><br>
+                                        <small>Tryout USDC-M futures trading</small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                
+                    <li class="nav-item dropdown px-xl-3">    <!---TRADIING BOTS--> 
+                        <a href="" class="nav-link " role="button" data-bs-toggle="dropdown">Trading bots</a>
+                        <ul class="dropdown-menu dropdown-menu-dark columns-2">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <li><h5 class="dropdown-header">Basic bots</h5></li>
+                                    <li class="d-flex">
+                                        <div class="dropdown-item  d-flex">
+                                            <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/Spot_Grid_night.197d93581d5afc24c7444a1c782d0186.svg" alt="" style="margin-top: 10px;">
+                                            <div class="p-2">
+                                                <a href="" class="content-nav">Spot grid</a><br>
+                                                <small>Automate your trades with grid bots</small>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex">
+                                        <div class="dropdown-item  d-flex">
+                                            <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/Future_Grid_night.7f20da8149ff83f094a549cd4d21f24f.svg" alt="" style="margin-top: 10px;">
+                                            <div class="p-2">
+                                                <a href="" class="content-nav">Futures grid</a><br>
+                                                <small>Amplify bot trades with leverage</small>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex">
+                                        <div class="dropdown-item  d-flex">
+                                            <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/Auto_invest_night.f5956f245c88029ff0c8759e0254d47d.svg" alt="" style="margin-top: 10px;">
+                                            <div class="p-2">
+                                                <a href="" class="content-nav">Spot auto-invest</a><br>
+                                                <small>Regularly invest in assets without market timing.</small>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </div>
+                                <div class="col-sm-6">
+                                    <li><h5 class="dropdown-header">Advanced Bots</h5></li>
+                                    <li class="d-flex">
+                                        <div class="dropdown-item  d-flex">
+                                            <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/Auto_invest_night.f5956f245c88029ff0c8759e0254d47d.svg" alt="" style="margin-top: 10px;">
+                                            <div class="p-2">
+                                                <a href="" class="content-nav">Spot Martingale</a><br>
+                                                <small>Automated spot investments to minimize market volatility.</small>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex">
+                                        <div class="dropdown-item  d-flex">
+                                            <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/Future_DCA_night.2c5f2dd0de611ed20ccb323acdf15d2c.svg" alt="" style="margin-top: 10px;">
+                                            <div class="p-2">
+                                                <a href="" class="content-nav">Futures Martingale</a><br>
+                                                <small>Automated futures investments with margin leverage.</small>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex">
+                                        <div class="dropdown-item  d-flex">
+                                            <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/spot-cta-dark.c4440817c4443c1dd68404388591c5ed.svg" alt="" style="margin-top: 10px;">
+                                            <div class="p-2">
+                                                <a href="" class="content-nav">Spot CTA</a><br>
+                                                <small>Suitable for diverse markets. Intelligent short-term trading.</small>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex">
+                                        <div class="dropdown-item  d-flex">
+                                            <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/future-cta-dark.2e3b3f1d7def28b27104402d30161f20.svg" alt="" style="margin-top: 10px;">
+                                            <div class="p-2">
+                                                <a href="" class="content-nav">Futures CTA</a><br>
+                                                <small>Suitable for diverse markets. Intelligent short-term trading.</small>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </div>
+                            </div>               
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown px-xl-3">    <!---FUTURE INFO-->
+                        <a href="" class="nav-link " role="button" data-bs-toggle="dropdown">Futures Info</a>
+                        <ul class="dropdown-menu dropdown-menu-dark columns-1">
+                            <li class="d-flex ">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/info-funding-rate-dark.c97c5ec9e7817e6bb33befe1d32e5a6a.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2">
+                                        <a href="" class="content-nav">Funding rate</a><br>
+                                        <small>Keeps the perpetual swap market price consistent with spot price</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/info-risk-dark.4d07b1f93fd0c01fe272b66a0b37937b.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2">
+                                        <a href="" class="content-nav">Risk provision</a><br>
+                                        <small>Protects traders from losses that exceed their principal</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/info-delivery-data-dark.e4854d3b0b7a6cdf4b05616694655270.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2" >
+                                        <a href="" class="content-nav">Delivery data</a><br>
+                                        <small>Data and price</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/info-tiers-dark.64cb60543e7a686e9dd953957937d93c.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2" >
+                                        <a href="" class="content-nav">Position tiers</a><br>
+                                        <small>Calculate max open positions and account risk</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/info-intro-dark.7c43e73241563bb8cfb05e3016a9452b.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2" >
+                                        <a href="" class="content-nav">Futures product information</a><br>
+                                        <small>Introduction to all of our futures products</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/info-control-dark.e1f202bc9d888e77ee1e26bdc69e93e6.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2" >
+                                        <a href="" class="content-nav">Risk control clause</a><br>
+                                        <small>Preventing the excessive concentration of market risk</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/index-dark.abfbd83b7bf7b98690a3dd416dc3492f.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2" >
+                                        <a href="" class="content-nav">Index</a><br>
+                                        <small>Check the futures mark price and index price</small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown px-xl-3">    <!---COPY-TRADE-->
+                        <a href="" class="nav-link " role="button" data-bs-toggle="dropdown">Copy Trading</a>
+                        <ul class="dropdown-menu dropdown-menu-dark columns-7">
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/copy-trading-black.943299daed05eea50f98832fdfa76e0d.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2">
+                                        <a href="" class="content-nav">Futures Copy Trading</a><br>
+                                        <small>Copy trades from elite spot traders</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/copy-trading-spot-black.fecc9f572871e07cbf7988133923a239.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2">
+                                        <a href="" class="content-nav">Spot Copy Trading</a><br>
+                                        <small>Copy trades from elite futures traders</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex">
+                                <div class="dropdown-item  d-flex">
+                                    <img class="icon-nav " src="https://www.bitget.com/mix/client/dist/media/strategyplaza-black.4e0e34943e22938a593e16fc5fad2961.svg" alt="" style="margin-top: 10px;">
+                                    <div class="p-2">
+                                        <a href="" class="content-nav">Bot copy trading</a><br>
+                                        <small>All strategists and bots</small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+           
+            <ul class="navbar-nav nav-login">                 <!---LOGIN-->
+                <li><a href="#" class="nav-link pt-4">Login</a></li>
+                <li><button class="button-signUp">Sign Up</button>
+                <li><a href="#" class="nav-link"><i class="fa fa-download" style="font-size:24px"></i></a></li>
+                <li><a href="#" class="nav-link"><i class="fa fa-globe" style="font-size:24px"></i></a></li>
+                <li><a href="#" class="nav-link"><i class="fa fa-sliders" style="font-size:24px"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid" style="margin-top: 70px;">
+        <div class="row">
+            <div class="col-xxl-7">
+                <div class="row" style="border: 1px solid rgb(114, 114, 114);">
+                    <div class="col-xxl-2 d-flex justify-content-center">
+                        <img class="mt-3" src="/img/logo-coin/bitcoin.png" alt="" style="width: 30px; height:30px">
+                        <div class="d-flex flex-sm-column p-1">
+                            <h5 class="text-light">BTC/USDT</h5>
+                            <small><i class="fa fa-info-circle" aria-hidden="true"></i>Bitcoin</small>
+                        </div>
+                    </div>
+                    <div class="col-xxl-6 ">
+                        <div class="d-flex text-light">
+                            <div class="p-2 d-flex flex-column justify-content-center">
+                                <h5 class="text-danger">25,900</h5>
+                                <span style="font-size: 12px;">≈ $ 25,896.85</span>
+                            </div>
+                            <div class="p-2 d-flex flex-column justify-content-center">
+                                <small>24h change</small>
+                                <small style="color:rgb(29 162 180)">+0.37%</small>
+                            </div>
+                            <div class="p-2 d-flex flex-column justify-content-center">
+                                <small>24h high</small>
+                                <small class="text-light">25982.14</small>
+                            </div>
+                            <div class="p-2 d-flex flex-column justify-content-center">
+                                <small>24h low</small>
+                                <small class="text-light">25766.36</small>
+                            </div>
+                            <div class="p-2 d-flex flex-column justify-content-center">
+                                <small>24h Vol (BTC)</small>
+                                <small class="text-light">2714.2198</small>
+                            </div>
+                            <div class="p-2 d-flex flex-column justify-content-center">
+                                <small>24h Turnover (USDT)</small>
+                                <small class="text-light">70164216.1271</small>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-xxl-2"></div>
+                    <div class="col-xxl-2 d-flex">
+                        <i class="fa fa-clock-o justify-content-center p-3" aria-hidden="true" style="font-size: 30px; color:#fff"></i>
+                        <i class="fa fa-book justify-content-center p-3" aria-hidden="true" style="font-size: 30px; color:#fff"></i>
+                    </div>
+                   
+                </div> 
+               
+            </div>
+            <div class="col d-flex p-3" style="border: 1px solid rgb(114, 114, 114);">
+                <h6 class="text-light">Order book</h6>
+                <h6 class="text-light ps-4">Market trades</h6>
+            </div>
+            <div class="col d-flex p-3" style="border: 1px solid rgb(114, 114, 114);">
+                <h6 class="text-light">Manual</h6>
+                <h6 class="text-light ps-4">Trading bots</h6>
+            </div>
+        </div>
+        <div class="col-xxl-7">
+            <div id="tradingview_17f8f"></div>
+        </div>
+    </div>
+
+    <script src="/Trade/TradeSpot/tradeSpot.js"></script>
+    
+</body>
+</html>
