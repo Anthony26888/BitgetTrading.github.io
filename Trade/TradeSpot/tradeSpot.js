@@ -1,5 +1,7 @@
+const symbolCoin = 'BTCUSDT';
+
 function showChart(){
-    const symbol = "BITGET:BTCUSDT";
+    const symbol = `BITGET:${symbolCoin}`
     const interval = "D"; // Daily interval
     const theme = "dark";
         // Function to create and configure the TradingView chart
@@ -35,15 +37,15 @@ function showOderBook(){
     const binanceApiUrl = 'https://api.binance.com/api/v3/depth';
 
     // Define the trading pair you want to retrieve order book data for
-    const symbol = 'BTCUSDT'; // Example: BTC to USDT
+     // Example: BTC to USDT
 
     // Define the number of levels you want to retrieve (e.g., 5 for top 5 bids and asks)
     const limit = 10;
 
     // Construct the URL with query parameters
-    const apiUrl = `${binanceApiUrl}?symbol=${symbol}&limit=${limit}`;
+    const apiUrl = `${binanceApiUrl}?symbol=${symbolCoin}&limit=${limit}`;
 
-    const apiPrice = `https://api.binance.com/api/v3/ticker/price?symbol=${symbol}`
+    const apiPrice = `https://api.binance.com/api/v3/ticker/price?symbol=${symbolCoin}`
     // bid
     fetch(apiUrl)
     .then((response) => response.json())
