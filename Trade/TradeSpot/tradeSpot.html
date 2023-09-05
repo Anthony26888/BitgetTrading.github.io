@@ -341,8 +341,8 @@
                     <div class="col-xxl-6 ">
                         <div class="d-flex text-light">
                             <div class="p-2 d-flex flex-column justify-content-center">
-                                <h5 class="text-danger">25,900</h5>
-                                <span style="font-size: 12px;">≈ $ 25,896.85</span>
+                                <h5 class="text-danger">25,674</h5>
+                                <span style="font-size: 12px;">≈ $ 25,674.37</span>
                             </div>
                             <div class="p-2 d-flex flex-column justify-content-center">
                                 <small>24h change</small>
@@ -386,7 +386,7 @@
                     <i class="sort-order">
                         <svg  width="16" height="16" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
                             <rect name="block" opacity="0.6" x="2" y="2" width="4" height="4" stroke="red" stroke-width="2"></rect>
-                            <rect name="block" opacity="0.6" x="2" y="10" width="4" height="4" stroke="green" stroke-width="2"></rect>
+                            <rect name="block" opacity="0.6" x="2" y="10" width="4" height="4" stroke="rgb(29 162 180)" stroke-width="2"></rect>
                             <rect name="row" x="9" y="1" width="6" height="2" fill="gray"></rect>
                             <rect name="row" x="9" y="5" width="6" height="2" fill="gray"></rect>
                             <rect name="row" x="9" y="9" width="6" height="2" fill="gray"></rect>
@@ -396,7 +396,7 @@
                     
                     <i class="sort-order">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
-                            <rect name="block" opacity="0.6" x="2" y="2" width="4" height="12" stroke="green" stroke-width="2"></rect>
+                            <rect name="block" opacity="0.6" x="2" y="2" width="4" height="12" stroke="rgb(29 162 180)" stroke-width="2"></rect>
                             <rect name="row" x="9" y="1" width="6" height="2" fill="gray"></rect>
                             <rect name="row" x="9" y="5" width="6" height="2" fill="gray"></rect>
                             <rect name="row" x="9" y="9" width="6" height="2" fill="gray"></rect>
@@ -406,7 +406,7 @@
                     
                     <i class="sort-order">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
-                            <rect name="block" opacity="0.6" x="2" y="2" width="4" height="12" stroke="red" stroke-width="2"></rect>
+                            <rect name="block" opacity="0.6" x="2" y="2" width="4" height="12" stroke="rgb(241 73 63)" stroke-width="2"></rect>
                             <rect name="row" x="9" y="1" width="6" height="2" fill="gray"></rect>
                             <rect name="row" x="9" y="5" width="6" height="2" fill="gray"></rect>
                             <rect name="row" x="9" y="9" width="6" height="2" fill="gray"></rect>
@@ -424,7 +424,17 @@
                             <th><small>Total</small></th>
                         </tr>
                     </thead>
-                    <tbody id="order-book">
+                    <tbody id="bid-book">
+                    </tbody>
+                </table>
+
+                <div class="d-flex ">
+                    <h5 style="color:rgb(241 73 63)" id="orderPrice"></h5>
+                    <small class="p-1">≈ $ 25,674.37</small>
+                </div>
+
+                <table class="table table-hover table-borderless table-sm">
+                    <tbody id="ask-book">
                     </tbody>
                 </table>
 

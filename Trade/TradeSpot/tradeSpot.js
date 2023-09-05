@@ -6,18 +6,19 @@ function showChart(){
         
         new TradingView.widget(
             {
-            "width": 1069,
-            "height": 610,
-            "symbol": symbol,
-            "interval": interval,
-            "timezone": "Etc/UTC",
-            "theme": theme,
-            "style": "1",
-            "locale": "en",
-            "toolbar_bg": "#f1f3f6",
-            "enable_publishing": false,
-            "allow_symbol_change": true,            
-            "container_id": "tradingview_chart"
+                "width": "100%",
+                "height":650,
+                "fullscreen":true,
+                "symbol": symbol,
+                "interval": interval,
+                "timezone": "Etc/UTC",
+                "theme": theme,
+                "style": "1",
+                "locale": "en",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "allow_symbol_change": true,            
+                "container_id": "tradingview_chart"
             }
         );
 }
@@ -25,8 +26,11 @@ showChart();
 
 
 function showOderBook(){
-    const orderBook = document.getElementById("order-book")
-    orderBook.innerHTML="";
+    const bidBook = document.getElementById("bid-book")
+    const askBook = document.getElementById("ask-book")
+    const orderPrice = document.getElementById("orderPrice")
+    bidBook.innerHTML="";
+    askBook.innerHTML="";
     // Binance API endpoint for order book data
     const binanceApiUrl = 'https://api.binance.com/api/v3/depth';
 
@@ -39,7 +43,8 @@ function showOderBook(){
     // Construct the URL with query parameters
     const apiUrl = `${binanceApiUrl}?symbol=${symbol}&limit=${limit}`;
 
-    // Fetch order book data
+    const apiPrice = `https://api.binance.com/api/v3/ticker/price?symbol=${symbol}`
+    // bid
     fetch(apiUrl)
     .then((response) => response.json())
     .then(data=> {
@@ -48,19 +53,48 @@ function showOderBook(){
             const priceOrder = value[0]
             const amountOrder = value[1]
             const total = priceOrder*amountOrder;
-            console.log(priceOrder)
             newTr = document.createElement("tr")
             newTr.innerHTML=`
                 <td style="color:rgb(241 73 63)">${priceOrder}</td>
                 <td>${amountOrder}</td>
                 <td>${total.toFixed(4)}</td>
             `
-            orderBook.appendChild(newTr)
+            bidBook.appendChild(newTr)
         });
-        
-       
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 
-       
+
+    // ask 
+    fetch(apiUrl)
+    .then((response) => response.json())
+    .then(data=> {
+        const ask = data.asks
+        ask.forEach(value => {
+            const priceOrder = value[0]
+            const amountOrder = value[1]
+            const total = priceOrder*amountOrder;
+            newTr = document.createElement("tr")
+            newTr.innerHTML=`
+                <td style="color:rgb(29 162 180)">${priceOrder}</td>
+                <td>${amountOrder}</td>
+                <td>${total.toFixed(4)}</td>
+            `
+            askBook.appendChild(newTr)
+        });
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+
+    //price
+    fetch(apiPrice)
+    .then((response) => response.json())
+    .then(data=> {
+        const price = data.price
+        orderPrice.innerHTML=Number(price).toFixed(2);
         
     })
     .catch((error) => {
