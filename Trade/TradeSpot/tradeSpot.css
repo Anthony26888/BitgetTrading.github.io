@@ -14,10 +14,11 @@ body{
 }
 
 .nav-link{
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     line-height: 4px;
     color: #fff;
+    
 }
 
 .nav-link:hover{
@@ -80,7 +81,7 @@ small{
 }
 
 .nav-login li{
-    margin: 0 10px;
+    margin: 0 5px;
 }
 
 

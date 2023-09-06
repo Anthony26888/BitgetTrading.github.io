@@ -105,3 +105,61 @@ function showOderBook(){
 
 }
 showOderBook()
+
+function showPriceCoin(){
+    const priceCoin = document.getElementById("infoCoin")
+    priceCoin.innerHTML="";
+    const apiUrl =`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin&page=1&sparkline=false&price_change_percentage=24h&locale=en&precision=2`
+    fetch(apiUrl)
+    .then((response) => response.json())
+    .then(data=> {
+        data.forEach(value =>{
+            const symbol = value.symbol;
+            const name = value.name;
+            const price = value.current_price;
+            const image = value.image;
+            const percent = value.price_change_percentage_24h;
+            const high24h = value.high_24h;
+            const low24h = value.low_24h;
+            const volume = value.total_volume;
+            const turnover = value.market_cap_change_24h;
+            const newDiv = document.createElement("div")
+            newDiv.classList.add("d-flex")
+            newDiv.innerHTML=`
+                <div class="p-2 d-flex flex-column justify-content-center">
+                    <h5 class="text-danger">${price.toLocaleString()}</h5>
+                    <span class="text-light" style="font-size: 12px;">≈ $ ${price.toLocaleString()}</span>
+                </div>
+                <div class="p-2 d-flex flex-column justify-content-center">
+                    <small>24h change</small>
+                    <small style="color:rgb(29 162 180)">${percent}</small>
+                </div>
+                <div class="p-2 d-flex flex-column justify-content-center">
+                    <small>24h high</small>
+                    <small class="text-light">${high24h}</small>
+                </div>
+                <div class="p-2 d-flex flex-column justify-content-center">
+                    <small>24h low</small>
+                    <small class="text-light">${low24h}</small>
+                </div>
+                <div class="p-2 d-flex flex-column justify-content-center">
+                    <small>24h Vol (BTC)</small>
+                    <small class="text-light">${volume}</small>
+                </div>
+                <div class="p-2 d-flex flex-column justify-content-center">
+                    <small>24h Turnover (USDT)</small>
+                    <small class="text-light">${turnover}</small>
+                </div>
+            `
+            priceCoin.appendChild(newDiv)
+
+            
+        })
+        
+        
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+showPriceCoin()
