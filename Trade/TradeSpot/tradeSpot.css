@@ -120,3 +120,8 @@ i{
     width: 100%;
     height: 650px;
 }
+
+.tab-list{
+    border: none;
+    background-color: transparent;
+}

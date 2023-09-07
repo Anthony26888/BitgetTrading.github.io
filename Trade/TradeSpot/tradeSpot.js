@@ -169,11 +169,12 @@ function showPriceCoin(){
 }
 showPriceCoin()
 
-function showBidList(){
+function showBidAskList(){
     const bidList = document.getElementById("bid-list")
+    const askList = document.getElementById("ask-list")
     const binanceApiUrl = 'https://api.binance.com/api/v3/depth';
 
-    const limit = 20;
+    const limit = 22;
 
     // Construct the URL with query parameters
     const apiUrl = `${binanceApiUrl}?symbol=${symbolCoin}&limit=${limit}`;
@@ -200,5 +201,26 @@ function showBidList(){
         console.error('Error:', error);
     });
 
+    // ask
+    fetch(apiUrl)
+    .then((response) => response.json())
+    .then(data=> {
+        const bids = data.asks
+        bids.forEach(value => {
+            const priceOrder = value[0]
+            const amountOrder = value[1]
+            const total = priceOrder*amountOrder;
+            newTr = document.createElement("tr")
+            newTr.innerHTML=`
+                <td style="color:rgb(29 162 180)">${Number(priceOrder).toFixed(2)}</td>
+                <td>${Number(amountOrder).toFixed(6)}</td>
+                <td>${total.toFixed(4)}</td>
+            `
+            askList.appendChild(newTr)
+        });
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 }
-showBidList()
+showBidAskList()
