@@ -1,4 +1,5 @@
 const symbolCoin = 'BTCUSDT';
+const intervalInSeconds = 10 ;
 
 function showChart(){
     const symbol = `BITGET:${symbolCoin}`
@@ -31,15 +32,12 @@ function showOderBook(){
     const bidBook = document.getElementById("bid-book")
     const askBook = document.getElementById("ask-book")
     const orderPrice = document.getElementById("orderPrice")
+    const orderPriceSmall = document.getElementById("orderPriceSmall")
     bidBook.innerHTML="";
     askBook.innerHTML="";
     // Binance API endpoint for order book data
     const binanceApiUrl = 'https://api.binance.com/api/v3/depth';
 
-    // Define the trading pair you want to retrieve order book data for
-     // Example: BTC to USDT
-
-    // Define the number of levels you want to retrieve (e.g., 5 for top 5 bids and asks)
     const limit = 10;
 
     // Construct the URL with query parameters
@@ -97,7 +95,7 @@ function showOderBook(){
     .then(data=> {
         const price = data.price
         orderPrice.innerHTML=Number(price).toFixed(2);
-        
+        orderPriceSmall.innerHTML="≈ $ "+ (Number(price).toFixed(4))
     })
     .catch((error) => {
         console.error('Error:', error);
@@ -105,6 +103,12 @@ function showOderBook(){
 
 }
 showOderBook()
+setInterval(showOderBook, intervalInSeconds * 1000);
+
+
+
+
+
 
 function showPriceCoin(){
     const priceCoin = document.getElementById("infoCoin")
@@ -124,7 +128,8 @@ function showPriceCoin(){
             const low24h = value.low_24h;
             const volume = value.total_volume;
             const turnover = value.market_cap_change_24h;
-
+            const coinSymbol = 'BTC';
+            const coinImageUrl = `https://www.binance.com/images/coins/images/${coinSymbol.toLowerCase()}.png`;
             infoCoin.innerHTML=`
                 <img class="mt-3" src="${image}" alt="" style="width: 30px; height:30px">
                 <div class="d-flex flex-sm-column p-1">
@@ -168,11 +173,17 @@ function showPriceCoin(){
     });
 }
 showPriceCoin()
+setInterval(showPriceCoin, intervalInSeconds * 1000);
+
+
+
+
 
 function showBidAskList(){
     const bidList = document.getElementById("bid-list")
     const askList = document.getElementById("ask-list")
-    const binanceApiUrl = 'https://api.binance.com/api/v3/depth';
+    const binanceApiUrl = `https://api.binance.com/api/v3/depth`
+    
 
     const limit = 22;
 

@@ -343,115 +343,176 @@
                 </div> 
                 <div id="tradingview_chart"></div>
             </div>
-            <div class="col d-flex flex-column p-3" style="border: 1px solid rgb(114, 114, 114);">
-                <div class="d-flex">
-                    <h6 class="text-light">Order book</h6>
-                    <h6 class="text-light ps-4">Market trades</h6>
-                </div>
-                <!-- orderbook -->
-                <ul class="nav nav-tabs tab-list">
-                    <li class="nav-item">
-                      <a class="nav-link active" data-bs-toggle="tab" href="#home">
-                        <i class="sort-order">
-                            <svg  width="16" height="16" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
-                                <rect name="block" opacity="0.6" x="2" y="2" width="4" height="4" stroke="red" stroke-width="2"></rect>
-                                <rect name="block" opacity="0.6" x="2" y="10" width="4" height="4" stroke="rgb(29 162 180)" stroke-width="2"></rect>
-                                <rect name="row" x="9" y="1" width="6" height="2" fill="gray"></rect>
-                                <rect name="row" x="9" y="5" width="6" height="2" fill="gray"></rect>
-                                <rect name="row" x="9" y="9" width="6" height="2" fill="gray"></rect>
-                                <rect name="row" x="9" y="13" width="6" height="2" fill="gray"></rect>
-                            </svg>
-                        </i>
-                      </a>
+            <div class="col p-3" style="border: 1px solid rgb(114, 114, 114);">
+                <ul class="nav  nav-underline">
+                    <li class="nav-order-book">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#orderBook">
+                            <h6 class="text-light">Order book</h6>
+                        </a>
+                        
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" data-bs-toggle="tab" href="#menu1">
-                        <i class="sort-order">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
-                                <rect name="block" opacity="0.6" x="2" y="2" width="4" height="12" stroke="rgb(29 162 180)" stroke-width="2"></rect>
-                                <rect name="row" x="9" y="1" width="6" height="2" fill="gray"></rect>
-                                <rect name="row" x="9" y="5" width="6" height="2" fill="gray"></rect>
-                                <rect name="row" x="9" y="9" width="6" height="2" fill="gray"></rect>
-                                <rect name="row" x="9" y="13" width="6" height="2" fill="gray"></rect>
-                            </svg>
-                        </i>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" data-bs-toggle="tab" href="#menu2">
-                        <i class="sort-order">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
-                                <rect name="block" opacity="0.6" x="2" y="2" width="4" height="12" stroke="rgb(241 73 63)" stroke-width="2"></rect>
-                                <rect name="row" x="9" y="1" width="6" height="2" fill="gray"></rect>
-                                <rect name="row" x="9" y="5" width="6" height="2" fill="gray"></rect>
-                                <rect name="row" x="9" y="9" width="6" height="2" fill="gray"></rect>
-                                <rect name="row" x="9" y="13" width="6" height="2" fill="gray"></rect>
-                            </svg>
-                        </i>
-                      </a>
+                    <li class="">
+                        <a class="nav-link" data-bs-toggle="tab" href="#marketTrade">
+                            <h6 class="text-light">Market trades</h6>
+                        </a>
                     </li>
                 </ul>
 
-
-                <div class="tab-content">
-                    <div class="tab-pane container active" id="home">
-                        <table class="table table-hover table-borderless table-sm">
-                            <thead>
-                                <tr >
-                                    <th><small>Price(USDT)</small></th>
-                                    <th><small>Amount(BTC)</small></th>
-                                    <th><small>Total</small></th>
-                                </tr>
-                            </thead>
-                            <tbody id="bid-book">
-                            </tbody>
-                        </table>
-        
-                        <div class="d-flex ">
-                            <h5 style="color:rgb(241 73 63)" id="orderPrice"></h5>
-                            <small class="p-1">≈ $ 25,674.37</small>
+                <div class="tab-content pt-2">
+                    <div class="tab-pane fade show active" id="orderBook">
+                        <ul class="nav">
+                            <li class="nav-item tab-order">
+                              <a class="nav-link active" data-bs-toggle="tab" href="#home">
+                                <i class="sort-order">
+                                    <svg  width="16" height="16" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
+                                        <rect name="block" opacity="0.6" x="2" y="2" width="4" height="4" stroke="red" stroke-width="2"></rect>
+                                        <rect name="block" opacity="0.6" x="2" y="10" width="4" height="4" stroke="rgb(29 162 180)" stroke-width="2"></rect>
+                                        <rect name="row" x="9" y="1" width="6" height="2" fill="gray"></rect>
+                                        <rect name="row" x="9" y="5" width="6" height="2" fill="gray"></rect>
+                                        <rect name="row" x="9" y="9" width="6" height="2" fill="gray"></rect>
+                                        <rect name="row" x="9" y="13" width="6" height="2" fill="gray"></rect>
+                                    </svg>
+                                </i>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-bs-toggle="tab" href="#menu1">
+                                <i class="sort-order">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
+                                        <rect name="block" opacity="0.6" x="2" y="2" width="4" height="12" stroke="rgb(29 162 180)" stroke-width="2"></rect>
+                                        <rect name="row" x="9" y="1" width="6" height="2" fill="gray"></rect>
+                                        <rect name="row" x="9" y="5" width="6" height="2" fill="gray"></rect>
+                                        <rect name="row" x="9" y="9" width="6" height="2" fill="gray"></rect>
+                                        <rect name="row" x="9" y="13" width="6" height="2" fill="gray"></rect>
+                                    </svg>
+                                </i>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-bs-toggle="tab" href="#menu2">
+                                <i class="sort-order">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
+                                        <rect name="block" opacity="0.6" x="2" y="2" width="4" height="12" stroke="rgb(241 73 63)" stroke-width="2"></rect>
+                                        <rect name="row" x="9" y="1" width="6" height="2" fill="gray"></rect>
+                                        <rect name="row" x="9" y="5" width="6" height="2" fill="gray"></rect>
+                                        <rect name="row" x="9" y="9" width="6" height="2" fill="gray"></rect>
+                                        <rect name="row" x="9" y="13" width="6" height="2" fill="gray"></rect>
+                                    </svg>
+                                </i>
+                              </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane container active" id="home">
+                                <table class="table table-hover table-borderless table-sm" >
+                                    <thead>
+                                        <tr >
+                                            <th><small>Price(USDT)</small></th>
+                                            <th><small>Amount(BTC)</small></th>
+                                            <th><small>Total</small></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="bid-book">
+                                    </tbody>
+                                </table>
+                
+                                <div class="d-flex ">
+                                    <h5 style="color:rgb(241 73 63)" id="orderPrice"></h5>
+                                    <small class="p-1" id="orderPriceSmall">≈ $ 25,674.37</small>
+                                </div>
+                
+                                <table class="table table-hover table-borderless table-sm">
+                                    <tbody id="ask-book">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane container fade" id="menu1">
+                                <table class="table table-hover table-borderless table-sm">
+                                    <thead>
+                                        <tr >
+                                            <th><small>Price(USDT)</small></th>
+                                            <th><small>Amount(BTC)</small></th>
+                                            <th><small>Total</small></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ask-list">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane container fade" id="menu2">
+                                <table class="table table-hover table-borderless table-sm">
+                                    <thead>
+                                        <tr >
+                                            <th><small>Price(USDT)</small></th>
+                                            <th><small>Amount(BTC)</small></th>
+                                            <th><small>Total</small></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="bid-list">
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-        
-                        <table class="table table-hover table-borderless table-sm">
-                            <tbody id="ask-book">
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane container fade" id="menu1">
-                        <table class="table table-hover table-borderless table-sm">
-                            <thead>
-                                <tr >
-                                    <th><small>Price(USDT)</small></th>
-                                    <th><small>Amount(BTC)</small></th>
-                                    <th><small>Total</small></th>
-                                </tr>
-                            </thead>
-                            <tbody id="a-list">
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane container fade" id="menu2">
-                        <table class="table table-hover table-borderless table-sm">
-                            <thead>
-                                <tr >
-                                    <th><small>Price(USDT)</small></th>
-                                    <th><small>Amount(BTC)</small></th>
-                                    <th><small>Total</small></th>
-                                </tr>
-                            </thead>
-                            <tbody id="bid-list">
-                            </tbody>
-                        </table>
+
                     </div>
                 </div>
-                
-
-                
-                
             </div>
-            <div class="col d-flex p-3" style="border: 1px solid rgb(114, 114, 114);">
-                <h6 class="text-light">Manual</h6>
-                <h6 class="text-light ps-4">Trading bots</h6>
+            <div class="col p-3" style="border: 1px solid rgb(114, 114, 114);">
+                <ul class="nav  nav-underline">
+                    <li class="nav-order-book">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#manual">
+                            <h6 class="text-light">Manual</h6>
+                        </a>
+                        
+                    </li>
+                    <li class="">
+                        <a class="nav-link" data-bs-toggle="tab" href="#tradingbot">
+                            <h6 class="text-light">Trading bots</h6>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content pt-3">
+                    <div class="tab-pane fade show active" id="manual">
+                        <ul class="nav nav-underline">
+                            <li class="nav-item">
+                              <a class="nav-link active" data-bs-toggle="tab" href="#spot">Spot</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link " data-bs-toggle="tab" href="#cross3x">Cross 3X</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-bs-toggle="tab" href="#isolated10x">Isolated10X</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="spot">
+                                <ul class="nav nav-pills nav-justified mt-5" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                      <button class="btn btn-outline-success active w-100" id="pills-home" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Buy</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                      <button class="btn btn-outline-danger w-100" id="tabpanel" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Sell</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                        <p class="t"></p>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+                                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="cross3x">
+                                
+                            </div>
+                            <div class="tab-pane fade" id="isolated10x">
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
        
