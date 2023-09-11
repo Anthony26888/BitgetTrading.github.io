@@ -1,114 +1,6 @@
 const symbolCoin = 'BTCUSDT';
 const intervalInSeconds = 10 ;
 
-function showChart(){
-    const symbol = `BITGET:${symbolCoin}`
-    const interval = "D"; // Daily interval
-    const theme = "dark";
-        // Function to create and configure the TradingView chart
-        
-        new TradingView.widget(
-            {
-                "width": "100%",
-                "height":650,
-                "fullscreen":true,
-                "symbol": symbol,
-                "interval": interval,
-                "timezone": "Etc/UTC",
-                "theme": theme,
-                "style": "1",
-                "locale": "en",
-                "toolbar_bg": "#f1f3f6",
-                "enable_publishing": false,
-                "allow_symbol_change": true,            
-                "container_id": "tradingview_chart"
-            }
-        );
-}
-showChart();
-
-
-function showOderBook(){
-    const bidBook = document.getElementById("bid-book")
-    const askBook = document.getElementById("ask-book")
-    const orderPrice = document.getElementById("orderPrice")
-    const orderPriceSmall = document.getElementById("orderPriceSmall")
-    bidBook.innerHTML="";
-    askBook.innerHTML="";
-    // Binance API endpoint for order book data
-    const binanceApiUrl = 'https://api.binance.com/api/v3/depth';
-
-    const limit = 10;
-
-    // Construct the URL with query parameters
-    const apiUrl = `${binanceApiUrl}?symbol=${symbolCoin}&limit=${limit}`;
-
-    const apiPrice = `https://api.binance.com/api/v3/ticker/price?symbol=${symbolCoin}`
-    // bid
-    fetch(apiUrl)
-    .then((response) => response.json())
-    .then(data=> {
-        const bids = data.bids
-        bids.forEach(value => {
-            const priceOrder = value[0]
-            const amountOrder = value[1]
-            const total = priceOrder*amountOrder;
-            newTr = document.createElement("tr")
-            newTr.innerHTML=`
-                <td style="color:rgb(241 73 63)">${Number(priceOrder).toFixed(2)}</td>
-                <td>${Number(amountOrder).toFixed(6)}</td>
-                <td>${total.toFixed(4)}</td>
-            `
-            bidBook.appendChild(newTr)
-        });
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-
-
-    // ask 
-    fetch(apiUrl)
-    .then((response) => response.json())
-    .then(data=> {
-        const ask = data.asks
-        ask.forEach(value => {
-            const priceOrder = value[0]
-            const amountOrder = value[1]
-            const total = priceOrder*amountOrder;
-            newTr = document.createElement("tr")
-            newTr.innerHTML=`
-                <td style="color:rgb(29 162 180)">${Number(priceOrder).toFixed(2)}</td>
-                <td>${Number(amountOrder).toFixed(6)}</td>
-                <td>${total.toFixed(4)}</td>
-            `
-            askBook.appendChild(newTr)
-        });
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-
-    //price
-    fetch(apiPrice)
-    .then((response) => response.json())
-    .then(data=> {
-        const price = data.price
-        orderPrice.innerHTML=Number(price).toFixed(2);
-        orderPriceSmall.innerHTML="≈ $ "+ (Number(price).toFixed(4))
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-
-}
-showOderBook()
-setInterval(showOderBook, intervalInSeconds * 1000);
-
-
-
-
-
 
 function showPriceCoin(){
     const priceCoin = document.getElementById("infoCoin")
@@ -175,63 +67,141 @@ function showPriceCoin(){
 showPriceCoin()
 setInterval(showPriceCoin, intervalInSeconds * 1000);
 
+function showChart(){
+    const symbol = `BITGET:${symbolCoin}`
+    const interval = "D"; // Daily interval
+    const theme = "dark";
+        // Function to create and configure the TradingView chart
+        
+        new TradingView.widget(
+            {
+                "width": "100%",
+                "height":650,
+                "fullscreen":true,
+                "symbol": symbol,
+                "interval": interval,
+                "timezone": "Etc/UTC",
+                "theme": theme,
+                "style": "1",
+                "locale": "en",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "allow_symbol_change": true,            
+                "container_id": "tradingview_chart"
+            }
+        );
+}
+showChart();
+
+
+
+
 
 
 
 
 function showBidAskList(){
-    const bidList = document.getElementById("bid-list")
     const askList = document.getElementById("ask-list")
-    const binanceApiUrl = `https://api.binance.com/api/v3/depth`
+    const bidList = document.getElementById("bid-list")
+    const askBook = document.getElementById("ask-book")
+    const bidBook = document.getElementById("bid-book")
+    const priceBook = document.getElementById("orderPrice")
+    const priceBookSmall = document.getElementById("orderPriceSmall")
+     // Depth (number of levels)
+    const depth = 22; // You can adjust this as needed
+    const depthMain = 10;
+    // Replace with your own Binance API endpoint
+    const apiUrl = `https://api.binance.com/api/v3/depth?symbol=${symbolCoin}&limit=${depth}`;
+    const apiUrlMain = `https://api.binance.com/api/v3/depth?symbol=${symbolCoin}&limit=${depthMain}`;
+    const apiUrlPrice = `https://api.binance.com/api/v3/ticker/price?symbol=${symbolCoin}`
+    //
+    fetch(apiUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            // Clear the existing rows
+            askList.innerHTML = '';
+            bidList.innerHTML = '';
+            // Insert bid rows
+            data.asks.forEach(ask => {
+                const row = askList.insertRow();
+                const priceBuy = row.insertCell(0);
+                const quantityBuy = row.insertCell(1);
+                const totalAsk = row.insertCell(2)
+                priceBuy.textContent = Number(ask[0]).toLocaleString(2);
+                quantityBuy.textContent = Number(ask[1]).toFixed(5);
+                totalAsk.textContent = Number(ask[0] * ask[1]).toLocaleString(3);
+                
+                priceBuy.style.color = 'rgb(29 162 180)'; // Customize the style for asks.
+            })
+
+
+            data.bids.forEach(bid =>{
+                const row = bidList.insertRow()
+                const priceSell = row.insertCell(0);
+                const quantitySell = row.insertCell(1);
+                const totalBid = row.insertCell(2);
+                priceSell.textContent = Number(bid[0]).toLocaleString(2);
+                quantitySell.textContent = Number(bid[1]).toFixed(5)
+                totalBid.textContent = Number(bid[0]*bid[1]).toLocaleString(2)
+                priceSell.style.color = 'rgb(241 73 63)'
+            })
+        })
     
-
-    const limit = 22;
-
-    // Construct the URL with query parameters
-    const apiUrl = `${binanceApiUrl}?symbol=${symbolCoin}&limit=${limit}`;
-   
-    // bid
-    fetch(apiUrl)
-    .then((response) => response.json())
-    .then(data=> {
-        const bids = data.bids
-        bids.forEach(value => {
-            const priceOrder = value[0]
-            const amountOrder = value[1]
-            const total = priceOrder*amountOrder;
-            newTr = document.createElement("tr")
-            newTr.innerHTML=`
-                <td style="color:rgb(241 73 63)">${Number(priceOrder).toFixed(2)}</td>
-                <td>${Number(amountOrder).toFixed(6)}</td>
-                <td>${total.toFixed(4)}</td>
-            `
-            bidList.appendChild(newTr)
-        });
-    })
     .catch((error) => {
-        console.error('Error:', error);
+        console.error('Error fetching order book data:', error);
     });
 
-    // ask
-    fetch(apiUrl)
-    .then((response) => response.json())
-    .then(data=> {
-        const bids = data.asks
-        bids.forEach(value => {
-            const priceOrder = value[0]
-            const amountOrder = value[1]
-            const total = priceOrder*amountOrder;
-            newTr = document.createElement("tr")
-            newTr.innerHTML=`
-                <td style="color:rgb(29 162 180)">${Number(priceOrder).toFixed(2)}</td>
-                <td>${Number(amountOrder).toFixed(6)}</td>
-                <td>${total.toFixed(4)}</td>
-            `
-            askList.appendChild(newTr)
-        });
-    })
+    //Main
+    fetch(apiUrlMain)
+        .then((response) => response.json())
+        .then((data) => {
+            // Clear the existing rows
+            askBook.innerHTML = '';
+            bidBook.innerHTML = '';
+            // Insert bid rows
+            data.asks.forEach(ask => {
+                const row = askBook.insertRow();
+                const priceBuy = row.insertCell(0);
+                const quantityBuy = row.insertCell(1);
+                const totalAsk = row.insertCell(2)
+                priceBuy.textContent = Number(ask[0]).toLocaleString(2);
+                quantityBuy.textContent = Number(ask[1]).toFixed(5);
+                totalAsk.textContent = Number(ask[0] * ask[1]).toLocaleString(3);
+                
+                priceBuy.style.color = 'rgb(29 162 180)'; // Customize the style for asks.
+            })
+
+
+            data.bids.forEach(bid =>{
+                const row = bidBook.insertRow()
+                const priceSell = row.insertCell(0);
+                const quantitySell = row.insertCell(1);
+                const totalBid = row.insertCell(2);
+                priceSell.textContent = Number(bid[0]).toLocaleString(2);
+                quantitySell.textContent = Number(bid[1]).toFixed(5)
+                totalBid.textContent = Number(bid[0]*bid[1]).toLocaleString(2)
+                priceSell.style.color = 'rgb(241 73 63)'
+            })
+        })
+    
     .catch((error) => {
-        console.error('Error:', error);
+        console.error('Error fetching order book data:', error);
     });
+
+    fetch(apiUrlPrice)
+        .then((response) => response.json())
+        .then((data) => {
+            priceBook.innerHTML = '';
+            priceBookSmall.innerHTML = '';
+            priceBook.textContent = Number(data.price).toLocaleString(2);
+            priceBookSmall.textContent = "≈ " + data.price;
+
+        })
 }
-showBidAskList()
+
+    // Fetch order book data initially and set up polling
+showBidAskList();
+setInterval(showBidAskList, 5000); // Refresh every 5 seconds (adjust as needed)
+
+
+
