@@ -147,3 +147,18 @@ i{
     border-color: #656e6f;
 }
 
+.text-check{
+    color: rgb(29 162 180);
+    font-size: 12px;
+    line-height: 19px;
+}
+
+.button-trade-buy{
+    background-color: rgb(29 162 180);
+    font-size: 14px;
+}
+
+.button-trade-sell{
+    background-color: rgb(241 73 63);
+    font-size: 14px;
+}
