@@ -93,13 +93,6 @@ function showChart(){
 }
 showChart();
 
-
-
-
-
-
-
-
 function showBidAskList(){
     const askList = document.getElementById("ask-list")
     const bidList = document.getElementById("bid-list")
@@ -180,7 +173,8 @@ function showBidAskList(){
                 priceSell.textContent = Number(bid[0]).toLocaleString(2);
                 quantitySell.textContent = Number(bid[1]).toFixed(5)
                 totalBid.textContent = Number(bid[0]*bid[1]).toLocaleString(2)
-                priceSell.style.color = 'rgb(241 73 63)'
+                priceSell.style.color = 'rgb(241 73 63)';
+                
             })
         })
     
@@ -198,10 +192,45 @@ function showBidAskList(){
 
         })
 }
-
-    // Fetch order book data initially and set up polling
 showBidAskList();
-setInterval(showBidAskList, 5000); // Refresh every 5 seconds (adjust as needed)
+setInterval(showBidAskList, 5000);
+
+function showMarketTrade(){
+    const marketTrade = document.getElementById("market-trade")
+    const apiUrlMarket = `https://api.binance.com/api/v3/trades?symbol=${symbolCoin}&limit=22`
+
+    fetch(apiUrlMarket)
+    .then((response) => response.json())
+    .then((data) => {
+        marketTrade.innerHTML = '';
+        data.forEach(value =>{
+            const row = marketTrade.insertRow()
+            const timeOrder = row.insertCell(0)
+            const price = row.insertCell(1)
+            const quantity = row.insertCell(2)
+            const time = new Date(value.time)
+            const hours = time.getHours()
+            const minimutes = time.getMinutes()
+            const seconds = time.getSeconds()
+            const buyOrSell = value.isBuyerMaker;
+            timeOrder.textContent = hours + ":" + minimutes + ":" + seconds 
+            price.textContent = Number(value.price).toLocaleString()
+            quantity.textContent = Number(value.qty).toFixed(5)
+            if (buyOrSell != true){
+                price.style.color = 'rgb(241 73 63)'
+            }else{
+                price.style.color = 'rgb(29 162 180)'
+            }
+            
+        })
+        .catch((error) => {
+            console.error('Error fetching order book data:', error);
+        });
+        
+    })
+}
+showMarketTrade();
+setInterval(showMarketTrade, 5000)
 
 
 

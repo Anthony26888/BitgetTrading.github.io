@@ -122,10 +122,28 @@ i{
     height: 650px;
 }
 
-.tab-list{
-    border: none;
+.form-control{
     background-color: transparent;
+    color: #656e6f;
+}
+.form-control:focus{
+    background-color: transparent;
+    color: #fff;
 }
 
+.input-1::placeholder{    
+    color: #fff;
+}
+.input-2::placeholder{
+    color: #656e6f;
+}
+.input-group-text{
+    background-color: transparent;
+    color: #656e6f;
+    border-color: #656e6f;
+}
 
+.form-control{
+    border-color: #656e6f;
+}
 

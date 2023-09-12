@@ -453,9 +453,22 @@
                                 </table>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="tab-pane fade" id="marketTrade">
+                        <table class="table table-hover table-borderless table-sm">
+                            <thead>
+                                <tr >
+                                    <th><small>Time</small></th>
+                                    <th><small>Price(USDT)</small></th>
+                                    <th><small>Amount(BTC)</small></th>
+                                </tr>
+                            </thead>
+                            <tbody id="market-trade">
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+
             </div>
             <div class="col p-3" style="border: 1px solid rgb(114, 114, 114);">
                 <ul class="nav  nav-underline">
@@ -474,33 +487,84 @@
 
                 <div class="tab-content pt-3">
                     <div class="tab-pane fade show active" id="manual">
-                        <ul class="nav nav-underline">
-                            <li class="nav-item">
-                              <a class="nav-link active" data-bs-toggle="tab" href="#spot">Spot</a>
+                        <ul class="nav  nav-underline">
+                            <li class="nav-order-book">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#spot">
+                                    <h6 class="text-light">Spot</h6>
+                                </a>
+                                
                             </li>
-                            <li class="nav-item">
-                              <a class="nav-link " data-bs-toggle="tab" href="#cross3x">Cross 3X</a>
+                            <li class="">
+                                <a class="nav-link" data-bs-toggle="tab" href="#cross3x">
+                                    <h6 class="text-light">Cross 3x</h6>
+                                </a>
                             </li>
-                            <li class="nav-item">
-                              <a class="nav-link" data-bs-toggle="tab" href="#isolated10x">Isolated10X</a>
+                            <li class="">
+                                <a class="nav-link" data-bs-toggle="tab" href="#isolated10x">
+                                    <h6 class="text-light">isolated10x</h6>
+                                </a>
                             </li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="spot">
-                                <ul class="nav nav-pills nav-justified mt-5" id="pills-tab" role="tablist">
+                                <ul class="nav nav-pills nav-justified mt-3" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                      <button class="btn btn-outline-success active w-100" id="pills-home" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Buy</button>
+                                      <button class="btn btn-outline-info active w-100" id="pills-home" data-bs-toggle="tab" href="#buy">Buy</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                      <button class="btn btn-outline-danger w-100" id="tabpanel" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Sell</button>
+                                      <button class="btn btn-outline-danger w-100" id="tabpanel" data-bs-toggle="tab" href="#sell">Sell</button>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                        <p class="t"></p>
+                                    <div class="tab-pane fade show active" id="buy" >
+                                        <ul class="nav  nav-underline mt-3">
+                                            <li class="nav-order-book">
+                                                <a class="nav-link active" data-bs-toggle="tab" href="#limit">
+                                                    <h6 class="text-light">Limit</h6>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a class="nav-link" data-bs-toggle="tab" href="#market">
+                                                    <h6 class="text-light">Market</h6>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a class="nav-link" data-bs-toggle="tab" href="#oco">
+                                                    <h6 class="text-light">OCO</h6>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade show active" id="limit">
+                                                <div class="d-flex mt-3 justify-content-between">
+                                                    <small>Available _USDT</small>
+                                                    <div class="d-flex ">
+                                                        <span class="border border-info  text-info p-1" style="font-size: 12px;">Deposit</span>
+                                                        <span class="border border-info  text-info p-1 ms-1" style="font-size: 12px;">Transfer</span>
+                                                    </div>
+                                                </div>
+
+                                                <form action="">
+                                                    <div class="input-group mt-3">
+                                                        <span class="input-group-text" id="basic-addon1">Price</span>
+                                                        <input type="text" class="form-control text-end input-1" placeholder="25,567" aria-label="Price" aria-describedby="basic-addon1">
+                                                        <span class="input-group-text" id="basic-addon1">USDT</span>
+                                                    </div>
+                                                    <div class="input-group mt-3">
+                                                        <span class="input-group-text" id="basic-addon1">Amount</span>
+                                                        <input type="text" class="form-control text-end input-2" placeholder="Min 0.0001" aria-label="Amount" aria-describedby="basic-addon1">
+                                                        <span class="input-group-text" id="basic-addon1">BTC</span>
+                                                    </div>
+                                                    <input id="ex13" type="range" data-slider-ticks="[0, 100, 200, 300, 400]" data-slider-ticks-snap-bounds="30" data-slider-ticks-labels='["$0", "$100", "$200", "$300", "$400"]'/>
+                                                
+                                                      
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-                                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+                                    <div class="tab-pane fade" id="sell" >
+                                        <p class="text-light">sssssss</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="cross3x">
