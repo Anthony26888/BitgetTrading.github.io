@@ -587,15 +587,15 @@
                                                 <form action="">
                                                     <div class="input-group mt-3">
                                                         <span class="input-group-text" id="basic-addon1">Price</span>
-                                                        <input type="text" class="form-control text-end text-black-50" placeholder="25,567" aria-label="Price" aria-describedby="basic-addon1">
+                                                        <input type="text" class="form-control text-end text-light" placeholder="25,567" aria-label="Price" aria-describedby="basic-addon1" id="priceInput" value="">
                                                         <span class="input-group-text" id="basic-addon1">USDT</span>
                                                     </div>
                                                     <div class="input-group mt-3">
                                                         <span class="input-group-text" id="basic-addon1">Amount</span>
-                                                        <input type="text" class="form-control text-end text-black-50" placeholder="Min 0.0001" aria-label="Amount" aria-describedby="basic-addon1">
+                                                        <input type="num" class="form-control text-end text-light" placeholder="Min 0.0001" aria-label="Amount" aria-describedby="basic-addon1" >
                                                         <span class="input-group-text" id="basic-addon1">BTC</span>
                                                     </div>
-                                                    <input type="range" class="w-100 mt-3" name="buy-limit" id="buy-limit" min="0" max="100" value="0" step="25" list="steplist">
+                                                    <input type="range" class="w-100 mt-3" name="buy-limit" maxlength="524288" id="buy-limit" min="0" max="100" value="0" step="25" list="steplist">
                                                     <datalist id="steplist">
                                                         <option value="0" label="0%" ></option>
                                                         <option value="25" label="25%"></option>

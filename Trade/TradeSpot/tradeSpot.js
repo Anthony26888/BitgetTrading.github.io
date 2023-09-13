@@ -214,12 +214,27 @@ setInterval(showMarketTrade, 5000)
 
 
 function showForm(){
+    const amountUSDT = 2000;
     const value = document.querySelector("#value");
     const input = document.querySelector("#buy-limit");
+    const availableUSDT = document.getElementById("availableUsdt")
+    const apiUrl =`https://api.binance.com/api/v3/ticker/24hr?symbol=${symbolCoin}`
+    const priceInput = document.getElementById("priceInput")
     value.textContent = input.value;
     input.addEventListener("input", (event) => {
-    value.textContent = event.target.value;
+        value.textContent = event.target.value;
     }); 
+
+
+    availableUSDT.textContent = amountUSDT;
+    fetch(apiUrl)
+    .then((response) => response.json())
+    .then(data=> { 
+        priceInput.value = Number(data.lastPrice).toLocaleString();
+    })
+
+
 }
 showForm()
+setInterval(showForm,5000)
 
