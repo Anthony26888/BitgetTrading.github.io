@@ -1,34 +1,12 @@
 const symbolCoin = 'BTCUSDT';
 const nameCoin = 'bitcoin'
 const intervalInSeconds = 10 ;
+const logoInfo = document.getElementById("logoInfo")
+logoInfo.src = `https://assets.coingecko.com/coins/images/1/large/${nameCoin}.png`
 
-
-function showInfoCoin(){
-    const infoCoin = document.getElementById("infoCoin")
-    const apiUrl =`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin`
-    fetch(apiUrl)
-    .then((response) => response.json())
-    .then(data=> {
-        infoCoin.innerHTML = ''
-        const symbols = data.symbol
-        const img = data.image
-        const name = data.name
-        console.log(data)
-        infoCoin.innerHTML=`
-            <img class="mt-3" src="https://assets.coingecko.com/coins/images/1/large/${nameCoin}.png" alt="" style="width: 30px; height:30px">
-            <div class="d-flex flex-sm-column p-1">
-                <h6 class="text-light text-uppercase">${symbols}/USDT</h6>
-                <small class="text-capitalize"><i class="fa fa-info-circle" aria-hidden="true"></i>${name}</small>
-            </div>     
-        `
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-}
-showInfoCoin()
-
-function showPriceCoin(){
+function showPriceCoin(){    
+    const symbolInfo = document.getElementById("symbolInfo")
+    const nameInfo = document.getElementById("nameInfo")
     const priceInfo = document.getElementById("price")
     const priceInfoSmall = document.getElementById("priceSmall")
     const percentChange = document.getElementById("24hChange")
@@ -39,13 +17,18 @@ function showPriceCoin(){
     const apiUrl =`https://api.binance.com/api/v3/ticker/24hr?symbol=${symbolCoin}`
     fetch(apiUrl)
     .then((response) => response.json())
-    .then(data=> {   
+    .then(data=> {  
+            const symbol = data.symbol.slice(0,3) 
             const price = data.lastPrice;            
             const percent = data.priceChangePercent;            
             const high24h = data.highPrice;
             const low24h = data.lowPrice;
             const volume = data.volume;
             const totalVol = data.quoteVolume
+
+            
+            symbolInfo.textContent = symbol + "/USDT"
+            nameInfo.textContent = nameCoin
             priceInfo.textContent = Number(price).toLocaleString()
             priceInfoSmall.textContent = "≈ $ " + Number(price).toLocaleString()
             percentChange.textContent = percent + "%"
@@ -67,32 +50,28 @@ showPriceCoin()
 setInterval(showPriceCoin, 5000)
 
 
-
-
-
 function showChart(){
     const symbol = `BITGET:${symbolCoin}`
     const interval = "D"; // Daily interval
     const theme = "dark";
-        // Function to create and configure the TradingView chart
         
-        new TradingView.widget(
-            {
-                "width": "100%",
-                "height":650,
-                "fullscreen":true,
-                "symbol": symbol,
-                "interval": interval,
-                "timezone": "Etc/UTC",
-                "theme": theme,
-                "style": "1",
-                "locale": "en",
-                "toolbar_bg": "#f1f3f6",
-                "enable_publishing": false,
-                "allow_symbol_change": true,            
-                "container_id": "tradingview_chart"
-            }
-        );
+    new TradingView.widget(
+        {
+            "width": "100%",
+            "height":'650',
+            "fullscreen":true,
+            "symbol": symbol,
+            "interval": interval,
+            "timezone": "Etc/UTC",
+            "theme": theme,
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "allow_symbol_change": true,            
+            "container_id": "tradingview_chart"
+        }
+    );    
 }
 showChart();
 
@@ -234,4 +213,13 @@ showMarketTrade();
 setInterval(showMarketTrade, 5000)
 
 
+function showForm(){
+    const value = document.querySelector("#value");
+    const input = document.querySelector("#buy-limit");
+    value.textContent = input.value;
+    input.addEventListener("input", (event) => {
+    value.textContent = event.target.value;
+    }); 
+}
+showForm()
 
