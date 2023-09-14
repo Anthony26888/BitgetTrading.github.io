@@ -14,7 +14,9 @@ function showPriceCoin(){
     const lowPrice = document.getElementById("24hLow")
     const volPrice = document.getElementById("24hVol")
     const turnOver = document.getElementById("24hTurnOver")
+    const priceInput = document.getElementById("price-buy-limit")
     const apiUrl =`https://api.binance.com/api/v3/ticker/24hr?symbol=${symbolCoin}`
+    
     fetch(apiUrl)
     .then((response) => response.json())
     .then(data=> {  
@@ -41,6 +43,7 @@ function showPriceCoin(){
             lowPrice.textContent = Number(low24h).toLocaleString()
             volPrice.textContent = Number(volume).toLocaleString()
             turnOver.textContent = Number(totalVol).toLocaleString()
+            priceInput.placeholder =  Number(data.lastPrice).toLocaleString();
     })
     .catch((error) => {
         console.error('Error:', error);
@@ -213,28 +216,43 @@ showMarketTrade();
 setInterval(showMarketTrade, 5000)
 
 
-function showForm(){
+function showFormBuyLimit(){
     const amountUSDT = 2000;
     const value = document.querySelector("#value");
-    const input = document.querySelector("#buy-limit");
+    
     const availableUSDT = document.getElementById("availableUsdt")
     const apiUrl =`https://api.binance.com/api/v3/ticker/24hr?symbol=${symbolCoin}`
-    const priceInput = document.getElementById("priceInput")
-    value.textContent = input.value;
-    input.addEventListener("input", (event) => {
-        value.textContent = event.target.value;
-    }); 
+    const priceInput = document.getElementById("price-buy-limit")
+    const amountInput = document.getElementById("amount-buy-limit")
+    const rangeInput = document.getElementById("range-buy-limit");
+    const totalInput = document.getElementById("total-buy-limit")
+
 
 
     availableUSDT.textContent = amountUSDT;
+    const priceGet = priceInput.value
+    const amountGet = amountInput.value
+    const rangeGet = ((rangeInput.value)*amountUSDT)/100;    
+    
     fetch(apiUrl)
     .then((response) => response.json())
-    .then(data=> { 
-        priceInput.value = Number(data.lastPrice).toLocaleString();
+    .then(data=> {    
+        const priceCheck = data.lastPrice
+        if (priceGet > priceCheck){
+            priceFinal = priceGet
+        }else{
+            priceFinal = 0
+            
+        }
+        const amountFinal =  rangeGet / priceFinal
+        amountInput.value = Number(amountFinal).toFixed(5);
+        const total = priceFinal * amountFinal
+        totalInput.value = Number(total).toLocaleString()
     })
+    
 
 
 }
-showForm()
-setInterval(showForm,5000)
+
+
 

@@ -156,6 +156,7 @@ i{
 .button-trade-buy{
     background-color: rgb(29 162 180);
     font-size: 14px;
+    outline-color: rgb(29 162 180);
 }
 
 .button-trade-sell{

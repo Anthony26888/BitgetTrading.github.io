@@ -583,19 +583,21 @@
                                                         <span class="border border-info  text-info p-1 ms-1" style="font-size: 12px;">Transfer</span>
                                                     </div>
                                                 </div>
-                                                <P class="text-light" id="availableUsdt">1000</P>
-                                                <form action="">
+                                                <P class="text-light" id="availableUsdt"></P>
+                                                <form action="" novalidate>
                                                     <div class="input-group mt-3">
                                                         <span class="input-group-text" id="basic-addon1">Price</span>
-                                                        <input type="text" class="form-control text-end text-light" placeholder="25,567" aria-label="Price" aria-describedby="basic-addon1" id="priceInput" value="">
+                                                        <input type="text" class="form-control text-end text-light input-2" placeholder=""  aria-label="Price" aria-describedby="basic-addon1" id="price-buy-limit" value="" required>
                                                         <span class="input-group-text" id="basic-addon1">USDT</span>
+                                                        <div class="valid-feedback">Above last price</div>
                                                     </div>
                                                     <div class="input-group mt-3">
                                                         <span class="input-group-text" id="basic-addon1">Amount</span>
-                                                        <input type="num" class="form-control text-end text-light" placeholder="Min 0.0001" aria-label="Amount" aria-describedby="basic-addon1" >
+                                                        <input type="num" class="form-control text-end text-light input-2" oninput="showFormBuyLimit()" id="amount-buy-limit" placeholder="Min 0.0001" min="0.0001" aria-label="Amount" aria-describedby="basic-addon1" >
                                                         <span class="input-group-text" id="basic-addon1">BTC</span>
+                                                        <div class="valid-feedback">The buy amount cannot be less than the minimum.</div>
                                                     </div>
-                                                    <input type="range" class="w-100 mt-3" name="buy-limit" maxlength="524288" id="buy-limit" min="0" max="100" value="0" step="25" list="steplist">
+                                                    <input type="range" class="w-100 mt-3" name="buy-limit" oninput="showFormBuyLimit()" maxlength="524288" id="range-buy-limit" min="0" max="100" value="0" step="25" list="steplist" required>
                                                     <datalist id="steplist">
                                                         <option value="0" label="0%" ></option>
                                                         <option value="25" label="25%"></option>
@@ -605,10 +607,10 @@
                                                     </datalist>
                                                     <div class="input-group mt-3">
                                                         <span class="input-group-text" id="basic-addon1">Total</span>
-                                                        <input type="text" class="form-control text-end input-2" aria-label="Amount" aria-describedby="basic-addon1">
+                                                        <input type="text" class="form-control text-end input-1 text-light" id="total-buy-limit" aria-label="Amount" aria-describedby="basic-addon1">
                                                         <span class="input-group-text" id="basic-addon1">USDT</span>
                                                     </div>
-                                                    <button type="button" class="btn button-trade-buy w-100 mt-3">Buy</button>
+                                                    <button type="button" onclick="showFormBuyLimit()" class="btn btn-info  w-100 mt-3">Buy</button>
                                                     <p id="value" class="text-light"></p> 
                                                 </form>                                                
                                             </div>
@@ -621,7 +623,7 @@
                                                         <span class="border border-info  text-info p-1 ms-1" style="font-size: 12px;">Transfer</span>
                                                     </div>
                                                 </div>
-                                                <form action="">
+                                                <form action="" novalidate>
                                                     <div class="input-group mt-3">
                                                         <span class="input-group-text" id="basic-addon1">Price</span>
                                                         <input type="text" class="form-control text-end input-2 " placeholder="Buy at the best market price" aria-label="Price" aria-describedby="basic-addon1" readonly>
@@ -642,7 +644,7 @@
                                                         <option value="75" label="75%"></option>
                                                         <option value="100" label="100%"></option>
                                                     </datalist>
-                                                    <button type="button" class="btn button-trade-buy w-100 mt-3">Buy</button>
+                                                    <button type="button" class="btn btn-info w-100 mt-3">Buy</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -678,7 +680,7 @@
                                                     </div>
                                                 </div>
         
-                                                <form action="">
+                                                <form action="" novalidate>
                                                     <div class="input-group mt-3">
                                                         <span class="input-group-text" id="basic-addon1">Price</span>
                                                         <input type="text" class="form-control text-end input-1" placeholder="25,567" aria-label="Price" aria-describedby="basic-addon1">
@@ -702,7 +704,7 @@
                                                         <input type="text" class="form-control text-end input-2" aria-label="Amount" aria-describedby="basic-addon1">
                                                         <span class="input-group-text" id="basic-addon1">USDT</span>
                                                     </div>
-                                                    <button type="button" class="btn button-trade-sell w-100 mt-3">Sell</button>
+                                                    <button type="button" class="btn btn-danger w-100 mt-3">Sell</button>
                                                 </form>
                                             </div>
                                             <!--SELL-MARKET-->
@@ -714,7 +716,7 @@
                                                         <span class="border border-info  text-info p-1 ms-1" style="font-size: 12px;">Transfer</span>
                                                     </div>
                                                 </div>
-                                                <form action="">
+                                                <form action="" novalidate>
                                                     <div class="input-group mt-3">
                                                         <span class="input-group-text" id="basic-addon1">Price</span>
                                                         <input type="text" class="form-control text-end input-2 " placeholder="Buy at the best market price" aria-label="Price" aria-describedby="basic-addon1" readonly>
@@ -735,7 +737,7 @@
                                                         <option value="75" label="75%"></option>
                                                         <option value="100" label="100%"></option>
                                                     </datalist>
-                                                    <button type="button" class="btn button-trade-sell w-100 mt-3">Sell</button>
+                                                    <button type="button" class="btn btn btn-danger w-100 mt-3">Sell</button>
                                                 </form>
                                             </div>
                                         </div>
