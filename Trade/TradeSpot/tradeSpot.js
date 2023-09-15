@@ -31,7 +31,7 @@ function showPriceCoin(){
             
             symbolInfo.textContent = symbol + "/USDT"
             nameInfo.textContent = nameCoin
-            priceInfo.textContent = Number(price).toLocaleString()
+            priceInfo.textContent = Number(price).toLocaleString(3)
             priceInfoSmall.textContent = "≈ $ " + Number(price).toLocaleString()
             percentChange.textContent = percent + "%"
             if (percent >0){
@@ -61,7 +61,7 @@ function showChart(){
     new TradingView.widget(
         {
             "width": "100%",
-            "height":'650',
+            "height":'700',
             "fullscreen":true,
             "symbol": symbol,
             "interval": interval,

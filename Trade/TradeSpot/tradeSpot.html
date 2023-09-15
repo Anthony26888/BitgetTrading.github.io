@@ -326,61 +326,61 @@
             </ul>
         </div>
     </nav>
-
     <div class="container-fluid" style="margin-top: 70px;">
-        <div class="row">
-            <div class="col-xxl-7">
-                <div class="row" style="border: 1px solid rgb(114, 114, 114);">
-                    <div class="col-xxl-2 d-flex justify-content-center ms-3" id="infoCoin">
-                        <img class="mt-3" id="logoInfo" src="" alt="" style="width: 30px; height:30px">
-                        <div class="d-flex flex-sm-column p-2">
-                            <h6 class="text-light text-uppercase" id="symbolInfo"></h6>
-                            <div class="d-flex">
-                                <i class="fa fa-info-circle text-light" aria-hidden="true" ></i>
-                                <small class="text-capitalize pt-1" id="nameInfo"></small>
-                            </div>
-                            
-                        </div>    
+        <div class="row" style="border: 1px solid rgb(114, 114, 114); border-radius: 10px;">
+            <div class="col-xxl-1 d-flex justify-content-center ms-3" id="infoCoin">
+                <img class="mt-3" id="logoInfo" src="" alt="" style="width: 30px; height:30px">
+                <div class="d-flex flex-sm-column p-2">
+                    <h6 class="text-light text-uppercase" id="symbolInfo"></h6>
+                    <div class="d-flex">
+                        <i class="fa fa-info-circle text-light" aria-hidden="true" ></i>
+                        <small class="text-capitalize pt-1" id="nameInfo"></small>
                     </div>
-                    <div class="col-xxl-8 ">
-                        <div class="d-flex">
-                            <div class="d-flex">
-                                <div class="p-2 d-flex flex-column justify-content-center">
-                                    <h5 class="text-danger" id="price"></h5>
-                                    <span class="text-light" style="font-size: 12px;" id="priceSmall"></span>
-                                </div>
-                                <div class="p-2 d-flex flex-column justify-content-center">
-                                    <small>24h change</small>
-                                    <small style="color:rgb(29 162 180)" id="24hChange"></small>
-                                </div>
-                                <div class="p-2 d-flex flex-column justify-content-center">
-                                    <small>24h high</small>
-                                    <small class="text-light" id="24hHigh"></small>
-                                </div>
-                                <div class="p-2 d-flex flex-column justify-content-center">
-                                    <small>24h low</small>
-                                    <small class="text-light" id="24hLow"></small>
-                                </div>
-                                <div class="p-2 d-flex flex-column justify-content-center">
-                                    <small>24h Vol (BTC)</small>
-                                    <small class="text-light" id="24hVol"></small>
-                                </div>
-                                <div class="p-2 d-flex flex-column justify-content-center">
-                                    <small>24h Turnover (USDT)</small>
-                                    <small class="text-light" id="24hTurnOver"></small>
-                                </div>
-                            </div>
+                    
+                </div>    
+            </div>
+            <div class="col-xxl-9 ">
+                <div class="d-flex">
+                    <div class="d-flex">
+                        <div class="p-2 d-flex flex-column justify-content-center">
+                            <h5 class="text-danger" id="price"></h5>
+                            <span class="text-light" style="font-size: 12px;" id="priceSmall"></span>
                         </div>
-                    </div>                    
-                    <div class="col-xxl-1 d-flex">
-                        <i class="fa fa-clock-o justify-content-center p-3" aria-hidden="true" style="font-size: 30px; color:#fff"></i>
-                        <i class="fa fa-book justify-content-center p-3" aria-hidden="true" style="font-size: 30px; color:#fff"></i>
+                        <div class="p-2 d-flex flex-column justify-content-center">
+                            <small>24h change</small>
+                            <small style="color:rgb(29 162 180)" id="24hChange"></small>
+                        </div>
+                        <div class="p-2 d-flex flex-column justify-content-center">
+                            <small>24h high</small>
+                            <small class="text-light" id="24hHigh"></small>
+                        </div>
+                        <div class="p-2 d-flex flex-column justify-content-center">
+                            <small>24h low</small>
+                            <small class="text-light" id="24hLow"></small>
+                        </div>
+                        <div class="p-2 d-flex flex-column justify-content-center">
+                            <small>24h Vol (BTC)</small>
+                            <small class="text-light" id="24hVol"></small>
+                        </div>
+                        <div class="p-2 d-flex flex-column justify-content-center">
+                            <small>24h Turnover (USDT)</small>
+                            <small class="text-light" id="24hTurnOver"></small>
+                        </div>
                     </div>
-                   
-                </div> 
+                </div>
+            </div>                    
+            <div class="col-xxl-1 d-flex">
+                <i class="fa fa-clock-o justify-content-center p-3" aria-hidden="true" style="font-size: 30px; color:#fff"></i>
+                <i class="fa fa-book justify-content-center p-3" aria-hidden="true" style="font-size: 30px; color:#fff"></i>
+            </div>
+        </div> 
+    </div>
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-xxl-7" style="border: 1px solid rgb(114, 114, 114); border-radius: 10px;">
                 <div id="tradingview_chart"></div>
             </div>
-            <div class="col p-3" style="border: 1px solid rgb(114, 114, 114);">
+            <div class="col p-3 ms-2" style="border: 1px solid rgb(114, 114, 114);border-radius: 10px;">
                 <ul class="nav  nav-underline">
                     <li class="nav-order-book">
                         <a class="nav-link active" data-bs-toggle="tab" href="#orderBook">
@@ -507,7 +507,7 @@
                 </div>
 
             </div>
-            <div class="col p-3" style="border: 1px solid rgb(114, 114, 114);">
+            <div class="col p-3 ms-2" style="border: 1px solid rgb(114, 114, 114); border-radius: 10px;">
                 <ul class="nav  nav-underline">
                     <li class="nav-order-book">
                         <a class="nav-link active" data-bs-toggle="tab" href="#manual">
