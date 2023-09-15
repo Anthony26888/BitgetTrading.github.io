@@ -217,8 +217,7 @@ setInterval(showMarketTrade, 5000)
 
 
 function showFormBuyLimit(){
-    const amountUSDT = 2000;
-    const value = document.querySelector("#value");
+    const amountUSDT = 2000;    
     
     const availableUSDT = document.getElementById("availableUsdt")
     const apiUrl =`https://api.binance.com/api/v3/ticker/24hr?symbol=${symbolCoin}`
@@ -244,9 +243,8 @@ function showFormBuyLimit(){
             priceFinal = 0
             
         }
-        const amountFinal =  rangeGet / priceFinal
-        amountInput.value = Number(amountFinal).toFixed(5);
-        const total = priceFinal * amountFinal
+        
+        const total = priceFinal * amountGet
         totalInput.value = Number(total).toLocaleString()
     })
     
