@@ -593,17 +593,17 @@
                                                     </div>
                                                     <div class="input-group mt-3">
                                                         <span class="input-group-text" id="basic-addon1">Amount</span>
-                                                        <input type="num" class="form-control text-end text-light input-2" name="amountBuyLimit" oninput="this.form.rangeBuyLimit.value=this.value, showFormBuyLimit()" id="amount-buy-limit" placeholder="Min 0.0001" min="0.0001" max="1000000" aria-label="Amount" aria-describedby="basic-addon1" >
+                                                        <input type="num" class="form-control text-end text-light input-2" name="amountBuyLimit" oninput="this.form.rangeBuyLimit.value=this.value, showFormBuyLimit()" id="amount-buy-limit" placeholder="Min 0.0001" min="0.0001" max="1000000" aria-label="Amount" aria-describedby="basic-addon2" >
                                                         <span class="input-group-text" id="basic-addon1">BTC</span>
                                                         <div class="valid-feedback">The buy amount cannot be less than the minimum.</div>
                                                     </div>
-                                                    <input type="range" class="w-100 mt-3" name="rangeBuyLimit" oninput="this.form.amountBuyLimit.value=this.value" maxlength="524288" id="range-buy-limit" min="0" max="100" value="0" step="25" list="steplist" disabled>
-                                                    <datalist id="steplist">
+                                                    <input type="range" class="w-100 mt-3" name="rangeBuyLimit" oninput="this.form.amountBuyLimit.value=this.value, showFormBuyLimit() " maxlength="524288" id="range-buy-limit" min="0"  value="0"  list="step-list">
+                                                    <datalist id="step-list">
                                                         <option value="0" label="0%" ></option>
                                                         <option value="25" label="25%"></option>
                                                         <option value="50" label="50%"></option>
                                                         <option value="75" label="75%"></option>
-                                                        <option value="100" label="100%"></option>
+                                                        <option value="95" label="100%"></option>
                                                     </datalist>
                                                     <div class="input-group mt-3">
                                                         <span class="input-group-text" id="basic-addon1">Total</span>

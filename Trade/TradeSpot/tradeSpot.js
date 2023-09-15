@@ -222,16 +222,15 @@ function showFormBuyLimit(){
     const availableUSDT = document.getElementById("availableUsdt")
     const apiUrl =`https://api.binance.com/api/v3/ticker/24hr?symbol=${symbolCoin}`
     const priceInput = document.getElementById("price-buy-limit")
-    const amountInput = document.getElementById("amount-buy-limit")
-    const rangeInput = document.getElementById("range-buy-limit");
+    const amountInput = document.getElementById("amount-buy-limit")    
     const totalInput = document.getElementById("total-buy-limit")
-
+    const rangeInput = document.getElementById("range-buy-limit")
 
 
     availableUSDT.textContent = amountUSDT;
     const priceGet = priceInput.value
     const amountGet = amountInput.value
-    const rangeGet = ((rangeInput.value)*amountUSDT)/100;    
+    
     
     fetch(apiUrl)
     .then((response) => response.json())
@@ -240,17 +239,15 @@ function showFormBuyLimit(){
         if (priceGet > priceCheck){
             priceFinal = priceGet
         }else{
-            priceFinal = 0
+            priceFinal = priceCheck
             
         }
-        
-        const total = priceFinal * amountGet
+        rangeInput.max = Number(amountUSDT/priceCheck)
+        rangeInput.step = Number((amountUSDT/priceCheck)/4)
+        const total = priceCheck * amountGet
         totalInput.value = Number(total).toLocaleString()
     })
-    
-
-
 }
-
+showFormBuyLimit()
 
 
